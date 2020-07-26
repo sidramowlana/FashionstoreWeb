@@ -1,0 +1,102 @@
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+}
+
+.container {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+    padding: 0;
+    margin: 0;
+}
+
+.price {
+    color: grey;
+    font-size: 22px;
+}
+
+.container img {
+    width: 100%;
+    display: block;
+    /* height: auto; */
+}
+
+#notFavourite,
+#favourite {
+    position: absolute;
+    top: 7%;
+    left: 84%;
+    width: 10%;
+    height: 10%;
+    border-radius: 40%;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+}
+
+#addCart {
+    border-radius: 18px;
+    /* width: 50%; */
+    background-color: rgb(122, 32, 47);
+    border: rgb(122, 32, 47);
+}
+
+#info {
+    border-radius: 18px;
+    width: 20%;
+    background-color: rgb(122, 32, 47);
+    border: rgb(122, 32, 47);
+}
+
+input:focus,
+input.form-control:focus {
+    outline: none !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+#notFavourite {
+    color: white;
+    text-shadow: 1px 1px 1px;
+}
+
+#favourite {
+    color: red;
+    text-shadow: 1px 1px 1px;
+}
+
+.container button:hover {
+    border-radius: 40%;
+    border: none;
+}
+
+button:focus {
+    outline: none !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+img {
+    background-image: url("https://www.drbhupeshdshah.com/wp-content/themes/drbhupeshdshah/assets/images/img_loader.gif");
+    height: 50vh;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#info {
+    width: 60%;
+}
+
+.row {
+    margin: 2%;
+}

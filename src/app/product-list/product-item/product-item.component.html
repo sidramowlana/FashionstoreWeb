@@ -1,0 +1,20 @@
+<div class="card">
+    <div class="card container" style="position: relative;">
+        <button id="notFavourite" (click)="onAddRemoveWishList(productElement.productId)" *ngIf="isFavourite==false"><i class=" heart fa fa-heart-o"></i></button>
+        <button id="favourite" (click)="onAddRemoveWishList(productElement.productId)" *ngIf="isFavourite==true"><i class="heart fa fa-heart"></i></button>
+        <img [src]="productElement.scaledImage" class="img-fluid">
+
+    </div>
+
+    <h2>{{productElement.productName}}</h2>
+    <p class="price">USD ${{productElement.price}}</p>
+    <p>{{productElement.shortDescription}}</p>
+    <div class="row">
+        <div class="col-sm-8">
+            <button class="btn btn-primary" id="addCart" (click)="onAddCart()">Add to Cart</button>
+        </div>
+        <div class="col-sm-4">
+            <button class="btn btn-primary" id="info" (click)="onDetails(productElement.productId)"><i class="fa fa-info-circle"></i></button>
+        </div>
+    </div>
+</div>
