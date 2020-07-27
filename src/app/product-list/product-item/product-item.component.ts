@@ -25,7 +25,6 @@ export class ProductItemComponent implements OnInit {
 
   constructor(private authService: AuthenticationService,
     private wishlistService: WishlistService,
-    private productService: ProductService,
     private router: Router,
     private activatedRoute: ActivatedRoute) { }
 
@@ -47,12 +46,15 @@ export class ProductItemComponent implements OnInit {
     this.wishlistService.onAddRemoveWishlistService(productId).subscribe(() => {
       if (this.isFavourite == true) {
         this.isFavourite = false;
+        console.log("item: "+this.isFavourite)
+        this.wishlistService.wishListFavouriteChange.next(this.isFavourite);
       }
       else {
         this.isFavourite = true;
+        console.log("item: "+this.isFavourite)
+        this.wishlistService.wishListFavouriteChange.next(this.isFavourite);
       }
-    }
-      ,
+    },
       err => {
         console.log("error is: " + err.error.error.message);
         console.log("error is: " + err.error.error.stack);
@@ -60,13 +62,7 @@ export class ProductItemComponent implements OnInit {
     );
   }
 
-  onDetails(productId) {
-    this.productService.onGetProductByProductId(productId).subscribe(data => {
-      this.product = data;
-      console.log(this.product);
-
-    })
+  onDetails(index) {
+    this.router.navigate([index],{relativeTo:this.activatedRoute});
   }
-
-
 }

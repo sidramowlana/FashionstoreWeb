@@ -1,0 +1,18 @@
+#headerloginsign {
+    background-color: white;
+    color: rgb(122, 32, 47);
+    border-color: rgb(122, 32, 47);
+}
+
+img {
+    width: 4%;
+    border-radius: 55%;
+}
+
+.navbar-light {
+    background-color: rgb(122, 32, 47);
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: white;
+}

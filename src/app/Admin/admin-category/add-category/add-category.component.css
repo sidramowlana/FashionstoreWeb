@@ -1,0 +1,20 @@
+#addcategorycontain {
+    width: 35%;
+    position: relative;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.btn-default {
+    border: 2px solid rgb(122, 32, 47);
+    color: rgb(122, 32, 47);
+}
+
+@media screen and (max-width: 992px) {
+    .container-sm {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+}

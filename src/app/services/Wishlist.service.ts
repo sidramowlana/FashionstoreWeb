@@ -20,6 +20,9 @@ const getHttpOptions = (token: String) => {
 
 @Injectable()
 export class WishlistService {
+    wishListFavouriteChange = new Subject<boolean>();
+    // vehicleEditChange = new Subject<Vehicle>();
+
     constructor(private http: HttpClient, private tokenStorageService: TokenStorageService) {
 
     }

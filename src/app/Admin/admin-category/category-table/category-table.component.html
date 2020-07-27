@@ -1,0 +1,18 @@
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Tag Id</th>
+            <th>Tag Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let tag of tagList; let i = index">
+            <td>{{tag.tagId}}</td>
+            <td>{{tag.tag}}</td>
+            <td>
+                <i class="fa fa-times" style="color:red" aria-hidden="true" type="button" (click)="onDeleteTag(tag.tagId)"></i>
+            </td>
+        </tr>
+    </tbody>
+</table>

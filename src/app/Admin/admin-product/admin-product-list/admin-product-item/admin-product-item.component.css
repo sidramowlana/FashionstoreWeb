@@ -1,0 +1,33 @@
+img {
+    background-image: url("https://www.drbhupeshdshah.com/wp-content/themes/drbhupeshdshah/assets/images/img_loader.gif");
+    height: 50vh;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+
+/* button {
+    border: 1px solid rgb(122, 32, 47);
+    background-color: white;
+    color: black;
+}
+
+button:hover {
+    background-color: rgb(122, 32, 47);
+    border: white;
+} */
+
+button {
+    border-radius: 18px;
+    background-color: rgb(122, 32, 47);
+    border: rgb(122, 32, 47);
+    color: white;
+    width: 90%;
+    margin-left: 4%;
+}
+
+button:hover {
+    background-color: white;
+    border: 1px solid rgb(122, 32, 47);
+    color: black;
+}

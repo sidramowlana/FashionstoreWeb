@@ -1,0 +1,14 @@
+<div class="container-sm mx-auto" id="addcategorycontain">
+    <form class="form-inline" [formGroup]="categoryForm" (ngSubmit)="onAddCategory()">
+        <input class="form-control mr-sm-2" type="text" placeholder="Category Name" formControlName="tag" aria-label="Search">
+        <button class="btn btn-default my-2 my-sm-0" id="addButton" type="submit">Add Category</button>
+    </form>
+</div>
+<br>
+<div class="container-sm mx-auto" style="width:40%">
+    <div class="row">
+        <div class="col">
+            <app-category-table></app-category-table>
+        </div>
+    </div>
+</div>

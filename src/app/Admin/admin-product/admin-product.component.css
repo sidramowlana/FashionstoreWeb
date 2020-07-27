@@ -1,0 +1,10 @@
+#addProductButton {
+    border: 1px solid rgb(122, 32, 47);
+    background-color: white;
+    color: black;
+}
+
+#addProductButton:hover {
+    background-color: rgb(122, 32, 47);
+    color: white;
+}

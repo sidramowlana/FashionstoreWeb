@@ -1,0 +1,52 @@
+<!-- Modal -->
+<div>
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="col mx-auto m-3 d-flex justify-content-center">
+                    <h1 class="modal-title" id="editProductmodal">Add Product</h1>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="onClose()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="editProductForm" (ngSubmit)="onAddProduct()">
+                    <div class="form-group">
+                        <label for="imageURLId">Image URL</label>
+                        <input id="imageURLId" class="form-control" type="text" formControlName="scaledImage" #scaledImage>
+                    </div>
+                    <div class="form-group">
+                        <img [src]="scaledImage.value" class="img-thumbnail">
+                    </div>
+                    <div class="form-group">
+                        <label for="productNameId">Product Name</label>
+                        <input id="productNameId" class="form-control" type="text" formControlName="productName">
+                    </div>
+                    <div class="form-group">
+                        <label for="priceId">Price</label>
+                        <input id="priceId" class="form-control" type="text" formControlName="price">
+                    </div>
+                    <div class="form-group">
+                        <label for="quantityId">Quantity</label>
+                        <input id="quantityId" class="form-control" type="number" formControlName="quantity">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="descriptionId">Description</label>
+                        <textarea id="descriptionId" class="form-control" type="text" formControlName="shortDescription"></textarea>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="onClose()">Close</button>
+                        <button type="submit" class="btn btn-primary" [disabled]="!editProductForm.valid">Update Product</button>
+                        <hr>
+                        <!-- <div class="alert alert-success" role="alert" id="errorMessage" *ngIf="isSubmitted===true">{{message}} </div>
+                        <div class="alert alert-danger" role="alert" id="errorMessage" *ngIf="isError===true">{{message}} </div> -->
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

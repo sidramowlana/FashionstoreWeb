@@ -2,11 +2,11 @@
     <div class="card container" style="position: relative;">
         <button id="notFavourite" (click)="onAddRemoveWishList(productElement.productId)" *ngIf="isFavourite==false"><i class=" heart fa fa-heart-o"></i></button>
         <button id="favourite" (click)="onAddRemoveWishList(productElement.productId)" *ngIf="isFavourite==true"><i class="heart fa fa-heart"></i></button>
-        <img [src]="productElement.scaledImage" class="img-fluid">
+        <img [attr.src]="productElement?.scaledImage" class="img-fluid">
 
     </div>
 
-    <h2>{{productElement.productName}}</h2>
+    <h4>{{productElement.productName}}</h4>
     <p class="price">USD ${{productElement.price}}</p>
     <p>{{productElement.shortDescription}}</p>
     <div class="row">

@@ -1,0 +1,16 @@
+<div class="card" style="width: 18rem;">
+    <img [attr.src]="adminProductElement?.scaledImage" class="img-fluid">
+    <div class="card-body">
+        <h5 class="card-title">{{adminProductElement.productName}}</h5>
+        <p class="card-text">USD ${{adminProductElement.price}}</p>
+        <p class="card-text">{{adminProductElement.category}}</p>
+        <button class="btn btn-primary" (click)="onProductDetails(adminProductElement.productId)">Details</button>
+    </div>
+</div>
+<!-- <div class="row">
+    <div class="col">
+        <div class="container">
+            <app-edit-view-product class="modal fade" id="editViewProduct" tabindex="-1" role="dialog" aria-labelledby="addProductmodal" aria-hidden="true"></app-edit-view-product>
+        </div>
+    </div>
+</div> -->

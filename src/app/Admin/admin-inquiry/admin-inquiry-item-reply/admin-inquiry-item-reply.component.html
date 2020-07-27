@@ -1,0 +1,30 @@
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <h4 class="card-title">Inquiry Id{{id}}</h4>
+                <h5 class="card-title">{{productName}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{date}} Date</h6>
+                <hr>
+                <h6>Customer Contact Details</h6>
+                <h6 class="card-subtitle mb-2 text-muted">{{username}}</h6>
+                <h6 class="card-subtitle mb-2 text-muted">{{email}}</h6>
+                <h6 class="card-subtitle mb-2 text-muted">{{phone}}</h6>
+                <p class="card-text">{{question}}</p>
+
+                <button (click)="onReply()" id="reply" *ngIf="!isReply" class="btn btn-primary"><i class="fa fa-commenting-o" aria-hidden="true"></i>&nbsp; Reply</button>
+                <button (click)="onCancel()" *ngIf="isReply" id="cancel" class="btn btn-primary"><i class="fa fa-times" aria-hidden="true"></i>&nbsp; Cancel</button>
+
+            </div>
+            <div class="col-md-6">
+                <img class="card-img-top" src="{{imageUrl}}" alt="{{productName}}" style="width:100%">
+            </div>
+        </div>
+        <hr>
+        <form [formGroup]="inquiryReplyForm" (ngSubmit)="onSubmitReply()" *ngIf="isReply">
+            <textarea id="replyId" class="form-control" type="text" formControlName="reply"></textarea>
+            <br>
+            <button type="submit" id="sendReply" [disabled]="!inquiryReplyForm.valid" class="btn btn-primary"><i class="fa fa-paper-plane"></i>&nbsp; Send</button>
+        </form>
+    </div>
+</div>

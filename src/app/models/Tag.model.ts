@@ -1,6 +1,6 @@
 export class Tag {
     private tagId: number;
-    private tag: String;
+    public tag: String;
 
     constructor(tag: String) {
         this.tag = tag;
