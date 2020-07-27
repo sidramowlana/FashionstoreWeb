@@ -22,7 +22,7 @@
         </div>
         <hr>
         <form [formGroup]="inquiryReplyForm" (ngSubmit)="onSubmitReply()" *ngIf="isReply">
-            <textarea id="replyId" class="form-control" type="text" formControlName="reply"></textarea>
+            <textarea id="replyId" class="form-control" type="text" formControlName="answers"></textarea>
             <br>
             <button type="submit" id="sendReply" [disabled]="!inquiryReplyForm.valid" class="btn btn-primary"><i class="fa fa-paper-plane"></i>&nbsp; Send</button>
         </form>

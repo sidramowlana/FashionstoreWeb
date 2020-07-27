@@ -20,6 +20,7 @@ export class AdminInquiryItemReplyComponent implements OnInit {
   phone;
   question;
   isReply: boolean = false;
+  message:String;
   constructor(private activatedRoute: ActivatedRoute,
     private producInquiryService: ProductInquiryService,
     private router: Router,) { }
@@ -55,7 +56,14 @@ export class AdminInquiryItemReplyComponent implements OnInit {
   }
   initForm() {
     this.inquiryReplyForm = new FormGroup({
-      'reply': new FormControl(null, Validators.required)
+      'answers': new FormControl(null, Validators.required)
     })
+  }
+
+  onSubmitReply(){
+    this.producInquiryService.onAddAnswerByProductInquiryIdService(this.id,this.inquiryReplyForm).subscribe(data=>
+      {
+        this.message = data.message;
+      });
   }
 }

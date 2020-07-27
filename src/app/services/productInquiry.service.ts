@@ -28,11 +28,15 @@ export class ProductInquiryService {
         return this.http.get(API + 'answered/false', localHttpOptions);
     }
 
-    onGetInquiryByIdService(id):Observable<any>
-    {
+    onGetInquiryByIdService(id): Observable<any> {
         const localHttpOptions = getHttpOptions(this.tokenStorageService.getToken());
-        return this.http.get(API + 'product/'+id, localHttpOptions);
+        return this.http.get(API + 'product/' + id, localHttpOptions);
     }
 
-    
+    onAddAnswerByProductInquiryIdService(id, formData): Observable<any> {
+        const localHttpOptions = getHttpOptions(this.tokenStorageService.getToken());
+        return this.http.post<any>(API + 'product-answer/' + id,
+            { answers: formData.value.answers },
+            localHttpOptions);
+    }
 }
