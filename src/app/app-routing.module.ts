@@ -19,6 +19,7 @@ import { PendingListComponent } from './Admin/admin-orders/admin-pending-orders/
 import { AdminPendingOrdersComponent } from './Admin/admin-orders/admin-pending-orders/admin-pending-orders.component';
 import { CartOrdersItemComponent } from './Admin/admin-orders/admin-pending-orders/cart-orders-list/cart-orders-item/cart-orders-item.component';
 import { CartOrdersSelectedViewComponent } from './Admin/admin-orders/admin-pending-orders/cart-orders-selected-view/cart-orders-selected-view.component';
+import { AdminCancelCompleteOrderTableComponent } from './Admin/admin-orders/admin-cancel-complete-order-table/admin-cancel-complete-order-table.component';
 
 const appRoutes: Routes =
     [
@@ -62,8 +63,11 @@ const appRoutes: Routes =
         {
             path: 'orders', component: AdminOrdersComponent, children: [
                 { path: '', redirectTo: '/orders/pending', pathMatch: 'full' },
-                { path: 'pending', component: AdminPendingOrdersComponent,children:[
-                    {path:':id',component:CartOrdersSelectedViewComponent}] }
+                {
+                    path: 'pending', component: AdminPendingOrdersComponent, children: [
+                        { path: ':id', component: CartOrdersSelectedViewComponent }]
+                },
+                { path: 'cancel-complete', component: AdminCancelCompleteOrderTableComponent }
             ]
         }
 

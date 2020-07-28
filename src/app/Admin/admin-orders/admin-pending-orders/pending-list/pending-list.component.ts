@@ -10,11 +10,13 @@ import { OrdersService } from 'src/app/services/Orders.Service';
 export class PendingListComponent implements OnInit {
 
   pendingOrdersList;
+  count;
   constructor(private ordersService: OrdersService) { }
 
   ngOnInit() {
-    this.ordersService.onGetAllPendingOrdersByStatus("Cancelled").subscribe(data => {
+    this.ordersService.onGetAllPendingOrdersByStatus("Pending").subscribe(data => {
       this.pendingOrdersList = data;
+      this.count = this.pendingOrdersList.length;
     });
   }
 

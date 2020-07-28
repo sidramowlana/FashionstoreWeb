@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { OrdersService } from 'src/app/services/Orders.Service';
 
 @Component({
   selector: 'app-pending-item',
@@ -9,9 +10,12 @@ export class PendingItemComponent implements OnInit {
 
   @Input() pendingElement;
   @Input() index;
-  constructor() { }
+  constructor(private ordersService:OrdersService) { }
 
   ngOnInit() {
+  }
+  onCancelPending(){
+    
   }
 
 }
