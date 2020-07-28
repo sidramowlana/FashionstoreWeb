@@ -10,9 +10,10 @@ import { AdminProductComponent } from './Admin/admin-product/admin-product.compo
 import { AddProductComponent } from './Admin/admin-product/add-product/add-product.component';
 import { AdminCategoryComponent } from './Admin/admin-category/admin-category.component';
 import { EditViewProductComponent } from './Admin/admin-product/edit-view-product/edit-view-product.component';
-import { AdminInquiryComponent } from './Admin/admin-inquiry/admin-inquiry.component';
-import { AdminInquiryListComponent } from './Admin/admin-inquiry/admin-inquiry-list/admin-inquiry-list.component';
-import { AdminInquiryItemReplyComponent } from './Admin/admin-inquiry/admin-inquiry-item-reply/admin-inquiry-item-reply.component';
+import { OverallInquiriesComponent } from './Admin/overall-inquiries/overall-inquiries.component';
+import { AdminInquiryComponent } from './Admin/overall-inquiries/admin-inquiry/admin-inquiry.component';
+import { AdminInquiryItemReplyComponent } from './Admin/overall-inquiries/admin-inquiry/admin-inquiry-item-reply/admin-inquiry-item-reply.component';
+import { AdminInquiryReplyComponent } from './Admin/overall-inquiries/admin-inquiry-reply/admin-inquiry-reply.component';
 
 const appRoutes: Routes =
     [
@@ -36,20 +37,35 @@ const appRoutes: Routes =
                 ]
         },
         {
-            path: 'categories', component: AdminCategoryComponent, children: [
+            path: 'category', component: AdminCategoryComponent, children: [
                 { path: 'category', component: AddProductComponent }
             ]
         },
+        // {path:'inquiries',component:OverallInquiriesComponent,children}
         {
-            path: 'inquiries', component: AdminInquiryComponent, children: [
-                { path: ':id', component: AdminInquiryItemReplyComponent }
-            ]
-        }
-        // , children:[
-        //     {path: '', component: AdminInquiryListComponent},
-        //     {path: 'all', component: AdminInquiryListComponent}
-        //         ]
-        // }
+            path: 'inquiries', component: OverallInquiriesComponent, children:
+                [
+                    { path: '', redirectTo: '/inquiries/inquiry', pathMatch: 'full' },
+                { path: 'replies', redirectTo: '/inquiries/replies', pathMatch: 'full' },
+                {
+                    path: 'inquiry', component: AdminInquiryComponent, children: [
+                        { path: ':id', component: AdminInquiryItemReplyComponent }
+                    ]
+                },
+                { path: 'replies', component: AdminInquiryReplyComponent }
+                ]
+        },
+
+        // {
+        //     path: 'inquiries', component: AdminInquiryComponent, children: [
+        //         { path: ':id', component: AdminInquiryItemReplyComponent },
+        //         { path: 'replies-all', component: AdminInquiriesRepliesListComponent }
+
+        //     ]
+        // },
+        // { path: 'replies', component: AdminInquiryListComponent }
+
+
     ];
 @NgModule({
     imports: [

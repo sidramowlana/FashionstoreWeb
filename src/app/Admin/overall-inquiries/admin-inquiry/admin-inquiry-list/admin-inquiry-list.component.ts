@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductInquiry } from 'src/app/models/ProductInquiry.model';
-import { ProductInquiryService } from 'src/app/services/productInquiry.service';
+import { ProductInquiryService } from 'src/app/services/ProductInquiry.service';
 
 @Component({
   selector: 'app-admin-inquiry-list',
@@ -13,9 +13,12 @@ export class AdminInquiryListComponent implements OnInit {
   constructor(private productInquiryService:ProductInquiryService) { }
 
   ngOnInit() {
-    this.productInquiryService.onGetAllInquiriesNotAnswered().subscribe(data => {
+    this.productInquiryService.onGetAllInquiriesNotAnswered(false).subscribe(data => {
       this.productInquiryList = data;
       console.log(data)
+    });
+    this.productInquiryService.productInquiryListUpdate.subscribe(data => {
+      this.productInquiryList = data;
     });
   }
 

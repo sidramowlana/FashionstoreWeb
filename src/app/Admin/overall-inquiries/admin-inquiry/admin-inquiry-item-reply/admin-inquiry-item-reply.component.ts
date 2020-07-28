@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
-import { ProductInquiryService } from 'src/app/services/productInquiry.service';
+import { ProductInquiryService } from 'src/app/services/ProductInquiry.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -20,7 +20,8 @@ export class AdminInquiryItemReplyComponent implements OnInit {
   phone;
   question;
   isReply: boolean = false;
-  message:String;
+  message: String;
+  productInquiryList;
   constructor(private activatedRoute: ActivatedRoute,
     private producInquiryService: ProductInquiryService,
     private router: Router,) { }
@@ -38,7 +39,7 @@ export class AdminInquiryItemReplyComponent implements OnInit {
           this.username = data.user.username;
           this.email = data.user.email;
           this.phone = data.user.phone;
-          this.question = data.user.question;
+          this.question = data.question;
         });
       }
 
@@ -48,11 +49,10 @@ export class AdminInquiryItemReplyComponent implements OnInit {
     this.initForm();
   }
   onReply() {
-    this.isReply = true;    
+    this.isReply = true;
   }
-  onCancel()
-  {
-    this.isReply=false;
+  onCancel() {
+    this.isReply = false;
   }
   initForm() {
     this.inquiryReplyForm = new FormGroup({
@@ -60,10 +60,17 @@ export class AdminInquiryItemReplyComponent implements OnInit {
     })
   }
 
-  onSubmitReply(){
-    this.producInquiryService.onAddAnswerByProductInquiryIdService(this.id,this.inquiryReplyForm).subscribe(data=>
-      {
-        this.message = data.message;
-      });
+  onSubmitReply() {
+    this.producInquiryService.onAddAnswerByProductInquiryIdService(this.id, this.inquiryReplyForm).subscribe(data => {
+      this.message = data.message;
+      console.log(data);  
+      this.producInquiryService.onGetAllInquiriesNotAnswered(false).subscribe(data=>
+        {
+          this.productInquiryList = data;
+          this.producInquiryService.productInquiryListUpdate.next(this.productInquiryList);
+
+        })
+      this.router.navigate(['/inquiries'])
+    });
   }
 }

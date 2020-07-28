@@ -3,7 +3,7 @@
         background-color: rgb(122, 32, 47);
         border: rgb(122, 32, 47);
         color: white;
-        width: 90%;
+        /* width: 90%; */
         margin-left: 4%;
     }
     
@@ -11,4 +11,19 @@
         background-color: white;
         border: 1px solid rgb(122, 32, 47);
         color: black;
+    }
+    
+    .btn.btn-default:hover {
+        background-color: rgb(122, 32, 47);
+        border: 1px solid rgb(122, 32, 47);
+        color: white;
+    }
+    
+    .btn.btn-default {
+        border-radius: 18px;
+        background-color: white;
+        border: rgb(122, 32, 47);
+        color: rgb(122, 32, 47);
+        /* width: 90%; */
+        margin-left: 4%;
     }

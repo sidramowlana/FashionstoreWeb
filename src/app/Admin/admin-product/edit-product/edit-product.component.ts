@@ -11,7 +11,7 @@ import { Product } from 'src/app/models/Product.model';
 })
 export class EditProductComponent implements OnInit {
   editProductForm: FormGroup;
-  product:Product;
+  product: Product;
   id;
   productName;
   description;
@@ -44,11 +44,9 @@ export class EditProductComponent implements OnInit {
     );
   }
 
-  initForm()
-  {
-    if(this.editMode){
-    this.productService.onGetProductByProductIdService(this.id).subscribe(data=>
-      {
+  initForm() {
+    if (this.editMode) {
+      this.productService.onGetProductByProductIdService(this.id).subscribe(data => {
         this.editProductForm.setValue({
           scaledImage: data.scaledImage,
           productName: data.productName,
@@ -66,11 +64,24 @@ export class EditProductComponent implements OnInit {
       'shortDescription': new FormControl(null, Validators.required)
     });
   }
-  onAddProduct()
-  {
+  message: String;
+  isSubmit;
+  isError;
+  onUpdateProduct() {
     console.log("lets update");
+    this.productService.onUpdateProduct(this.id, this.editProductForm).subscribe(data => {
+      this.message = "Successfully updated"
+      this.isSubmit = true;
+      this.isError = false;
+      this.editProductForm.reset();
+      // this.productService.productUpdateChange.next(data);
+    }, err => {
+      this.isSubmit = false;
+      this.isError = true
+      this.message = err.error.message;
+    });
   }
   onClose() {
-    this.router.navigate(['./'], { relativeTo: this.activatedRoute });
+    this.router.navigate(['/products'], { relativeTo: this.activatedRoute });
   }
 }

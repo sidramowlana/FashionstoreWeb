@@ -24,6 +24,7 @@ export class AddCategoryComponent implements OnInit {
     this.tagService.onAddNewTag(this.categoryForm).subscribe(data => {
       console.log(data);
       this.tagService.tagUpdate.next(data);
+      this.categoryForm.reset();
     });
   }
 

@@ -43,11 +43,21 @@ export class ProductService{
             productName: productForm.value.productName,
             price: productForm.value.price,
             quantity: productForm.value.quantity,
-            catergoryArray: productForm.value.catergoryArray,
-            
+            catergoryArray: productForm.value.catergoryArray,        
             shortDescription: productForm.value.shortDescription           
         },localHttpOptions);
 
+    }
+    onUpdateProduct(id,formData): Observable<any> {
+        const localHttpOptions = getHttpOptions(this.tokenStorageService.getToken());
+        return this.http.put(API + 'updateProduct/' + id, {
+            scaledImage: formData.value.scaledImage,
+                productName: formData.value.productName,
+                price: formData.value.price,
+                quantity: formData.value.quantity,
+                shortDescription: formData.value.shortDescription           
+        },
+            localHttpOptions);
     }
 }
 

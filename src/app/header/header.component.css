@@ -16,3 +16,7 @@ img {
 .navbar-light .navbar-nav .nav-link {
     color: white;
 }
+
+.dropdown-item:hover {
+    color: rgb(122, 32, 47);
+}

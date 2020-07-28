@@ -5,17 +5,15 @@ img {
     background-size: contain;
 }
 
-
-/* button {
-    border: 1px solid rgb(122, 32, 47);
-    background-color: white;
-    color: black;
+.card-text {
+    margin: 0;
+    padding: 0
 }
 
-button:hover {
-    background-color: rgb(122, 32, 47);
-    border: white;
-} */
+.col-md-4 {
+    margin: 0;
+    padding: 0;
+}
 
 button {
     border-radius: 18px;
@@ -30,4 +28,8 @@ button:hover {
     background-color: white;
     border: 1px solid rgb(122, 32, 47);
     color: black;
+}
+
+.card-body {
+    padding: 5%;
 }

@@ -11,7 +11,7 @@
             </button>
             </div>
             <div class="modal-body">
-                <form [formGroup]="editProductForm" (ngSubmit)="onAddProduct()">
+                <form [formGroup]="editProductForm" (ngSubmit)="onUpdateProduct()">
                     <div class="form-group">
                         <label for="imageURLId">Image URL</label>
                         <input id="imageURLId" class="form-control" type="text" formControlName="scaledImage" #scaledImage>
@@ -38,11 +38,11 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="onClose()">Close</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="onClose()">Close</button>
                         <button type="submit" class="btn btn-primary" [disabled]="!editProductForm.valid">Update Product</button>
                         <hr>
-                        <!-- <div class="alert alert-success" role="alert" id="errorMessage" *ngIf="isSubmitted===true">{{message}} </div>
-                        <div class="alert alert-danger" role="alert" id="errorMessage" *ngIf="isError===true">{{message}} </div> -->
+                        <div class="alert alert-success" role="alert" id="errorMessage" *ngIf="isSubmit===true">{{message}} </div>
+                        <div class="alert alert-danger" role="alert" id="errorMessage" *ngIf="isError===true">{{message}} </div>
                     </div>
                 </form>
             </div>

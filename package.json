@@ -24,6 +24,7 @@
     "@ng-select/ng-select": "^2.20.5",
     "bootstrap": "^4.5.0",
     "core-js": "^2.5.4",
+    "ngx-bar-rating": "^1.1.0",
     "rxjs": "~6.2.0",
     "zone.js": "~0.8.26"
   },

@@ -30,11 +30,21 @@ import { EditViewProductComponent } from './Admin/admin-product/edit-view-produc
 import { EditProductComponent } from './Admin/admin-product/edit-product/edit-product.component';
 import { ProductSearchPipe } from './Pipe/product-search.pipe';
 import { CategorySearchPipe } from './Pipe/category-search.pipe';
-import { AdminInquiryComponent } from './Admin/admin-inquiry/admin-inquiry.component';
-import { AdminInquiryItemComponent } from './Admin/admin-inquiry/admin-inquiry-item/admin-inquiry-item.component';
-import { AdminInquiryItemReplyComponent } from './Admin/admin-inquiry/admin-inquiry-item-reply/admin-inquiry-item-reply.component';
-import { AdminInquiryListComponent } from './Admin/admin-inquiry/admin-inquiry-list/admin-inquiry-list.component';
-import { ProductInquiryService } from './services/productInquiry.service';
+import { AdminInquiryComponent } from './Admin/overall-inquiries/admin-inquiry/admin-inquiry.component';
+import { AdminInquiryListComponent } from './Admin/overall-inquiries/admin-inquiry/admin-inquiry-list/admin-inquiry-list.component';
+import { AdminInquiryItemComponent } from './Admin/overall-inquiries/admin-inquiry/admin-inquiry-list/admin-inquiry-item/admin-inquiry-item.component';
+import { AdminInquiryItemReplyComponent } from './Admin/overall-inquiries/admin-inquiry/admin-inquiry-item-reply/admin-inquiry-item-reply.component';
+import { OverallInquiriesComponent } from './Admin/overall-inquiries/overall-inquiries.component';
+import { AdminInquiryReplyComponent } from './Admin/overall-inquiries/admin-inquiry-reply/admin-inquiry-reply.component';
+import { ProductInquiryService } from './services/ProductInquiry.service';
+import { BarRatingModule } from "ngx-bar-rating";
+import { RateReview } from './models/RateReview.model';
+import { RateReviewServie } from './services/RateReview.service';
+import { AdminOrdersComponent } from './Admin/admin-orders/admin-orders.component';
+import { AdminPendingOrdersComponent } from './Admin/adminOrders/admin-pending-orders/admin-pending-orders.component';
+import { PendingListComponent } from './Admin/adminOrders/admin-pending-orders/pending-list/pending-list.component';
+import { PendingItemComponent } from './Admin/adminOrders/adminPendingOrders/pending-item/pending-item.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,7 +70,13 @@ import { ProductInquiryService } from './services/productInquiry.service';
     AdminInquiryComponent,
     AdminInquiryListComponent,
     AdminInquiryItemComponent,
-    AdminInquiryItemReplyComponent
+    AdminInquiryItemReplyComponent,
+    OverallInquiriesComponent,
+    AdminInquiryReplyComponent,
+    AdminOrdersComponent,
+    AdminPendingOrdersComponent,
+    PendingListComponent,
+    PendingItemComponent
   ],
   imports: [
     BrowserModule,
@@ -68,9 +84,10 @@ import { ProductInquiryService } from './services/productInquiry.service';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BarRatingModule
     ],
-  providers: [AuthenticationService,TokenStorageService,ProductService,WishlistService,CartService,TagService,ProductInquiryService,
+  providers: [AuthenticationService,TokenStorageService,ProductService,WishlistService,CartService,TagService,ProductInquiryService,RateReviewServie,
     {
       provide:HTTP_INTERCEPTORS, 
       useClass:AuthInterceptor, 

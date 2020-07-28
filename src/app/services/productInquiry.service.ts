@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { TokenStorageService } from "./tokenStorage.service";
 import { Observable, Subject } from "rxjs";
 import { Product } from "../models/Product.model";
+import { ProductInquiry } from "../models/ProductInquiry.model";
 
 const API = 'http://localhost:8080/api/inquiry/';
 
@@ -18,14 +19,14 @@ const getHttpOptions = (token: String) => {
 
 @Injectable()
 export class ProductInquiryService {
-
+    productInquiryListUpdate= new Subject<ProductInquiry[]>();
     constructor(private http: HttpClient,
         private tokenStorageService: TokenStorageService) {
     }
 
-    onGetAllInquiriesNotAnswered(): Observable<any> {
+    onGetAllInquiriesNotAnswered(isAnswered:boolean): Observable<any> {
         const localHttpOptions = getHttpOptions(this.tokenStorageService.getToken());
-        return this.http.get(API + 'answered/false', localHttpOptions);
+        return this.http.get(API + 'answered/'+isAnswered, localHttpOptions);
     }
 
     onGetInquiryByIdService(id): Observable<any> {
