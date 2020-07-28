@@ -10,11 +10,13 @@ import { ProductInquiryService } from 'src/app/services/ProductInquiry.service';
 export class AdminInquiryListComponent implements OnInit {
 
   productInquiryList:ProductInquiry[];
+  count;
   constructor(private productInquiryService:ProductInquiryService) { }
 
   ngOnInit() {
     this.productInquiryService.onGetAllInquiriesNotAnswered(false).subscribe(data => {
       this.productInquiryList = data;
+      this.count = this.productInquiryList.length;
       console.log(data)
     });
     this.productInquiryService.productInquiryListUpdate.subscribe(data => {

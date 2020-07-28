@@ -1,6 +1,9 @@
 <div class="row">
     <div class="container-sm">
+        <h1 *ngIf="count>0">Inquiries</h1>
         <app-admin-inquiry-item class="inquiryItem" *ngFor="let item of productInquiryList" [inquiryElement]="item" [index]="item.productInquiryId">
         </app-admin-inquiry-item>
+        <img *ngIf="count==0" src="https://cdn.dribbble.com/users/888330/screenshots/2653750/empty_data_set.png" class="img-fluid">
+
     </div>
 </div>

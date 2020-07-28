@@ -1,0 +1,29 @@
+.btn.btn-primary {
+    background-color: rgb(122, 32, 47);
+    border: 1px solid white;
+    color: white;
+    border-radius: 18px;
+}
+
+.btn.btn-primary:hover {
+    background-color: white;
+    border: 1px solid rgb(122, 32, 47);
+    color: rgb(122, 32, 47);
+}
+
+.btn.btn-default {
+    background-color: white;
+    border: 1px solid rgb(122, 32, 47);
+    color: rgb(122, 32, 47);
+    border-radius: 18px;
+}
+
+.btn.btn-default:hover {
+    background-color: rgb(122, 32, 47);
+    border: 1px solid white;
+    color: white;
+}
+
+button {
+    margin: 5%;
+}

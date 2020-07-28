@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OrdersService } from 'src/app/services/Orders.Service';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart-orders-selected-view',
@@ -9,7 +9,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 })
 export class CartOrdersSelectedViewComponent implements OnInit {
 
-  constructor(private ordersService: OrdersService, private activatedRoute: ActivatedRoute) { }
+  constructor(private ordersService: OrdersService, private activatedRoute: ActivatedRoute,private router:Router) { }
 
   id;
   date;
@@ -34,5 +34,23 @@ export class CartOrdersSelectedViewComponent implements OnInit {
       }
     );
   }
+message:String;
+isError:boolean=false;
+  onCancelPending() {
+    console.log("cancel: " + this.id)
+    this.ordersService.onUpdateOrderStatusByOrderId("Cancelled", this.id).subscribe(data => {
+      console.log(data);
+      this.isError=false;
+      this.router.navigate(['orders/cancel-complete']);
+    },
+    err=>
+    {
+      this.isError = true;
+      this.message = "System couldnt perform the cancelling of the order"
+    });
+
+  }
+
+
 }
 

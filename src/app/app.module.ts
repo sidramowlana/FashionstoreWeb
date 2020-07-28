@@ -48,6 +48,7 @@ import { CartOrdersListComponent } from './Admin/admin-orders/admin-pending-orde
 import { CartOrdersItemComponent } from './Admin/admin-orders/admin-pending-orders/cart-orders-list/cart-orders-item/cart-orders-item.component';
 import { CartOrdersSelectedViewComponent } from './Admin/admin-orders/admin-pending-orders/cart-orders-selected-view/cart-orders-selected-view.component';
 import { AdminCancelCompleteOrderTableComponent } from './Admin/admin-orders/admin-cancel-complete-order-table/admin-cancel-complete-order-table.component';
+import { ProductItemCardComponent } from './Customers/product-item-card/product-item-card.component';
 
 @NgModule({
   declarations: [
@@ -84,7 +85,8 @@ import { AdminCancelCompleteOrderTableComponent } from './Admin/admin-orders/adm
     CartOrdersListComponent,
     CartOrdersItemComponent,
     CartOrdersSelectedViewComponent,
-    AdminCancelCompleteOrderTableComponent
+    AdminCancelCompleteOrderTableComponent,
+    ProductItemCardComponent
   ],
   imports: [
     BrowserModule,

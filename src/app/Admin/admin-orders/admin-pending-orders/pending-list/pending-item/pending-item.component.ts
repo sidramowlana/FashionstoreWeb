@@ -14,8 +14,4 @@ export class PendingItemComponent implements OnInit {
 
   ngOnInit() {
   }
-  onCancelPending(){
-    
-  }
-
 }

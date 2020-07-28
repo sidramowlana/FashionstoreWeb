@@ -1,7 +1,8 @@
 <div class="container-sm">
     <div class="row">
         <div class="col-md-6">
-
+            <button class="btn btn-primary" (click)="onCancelPending()">Cancel Pending</button>
+            <div class="alert alert-danger" role="alert" id="errorMessage" *ngIf="isError===true">{{message}} </div>
         </div>
         <div class="col-md-6">
             <h4 class="card-title">Order Id {{id}} </h4>

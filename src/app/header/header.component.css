@@ -1,7 +1,47 @@
-#headerloginsign {
+/* #headerloginsign {
     background-color: white;
     color: rgb(122, 32, 47);
     border-color: rgb(122, 32, 47);
+    margin-left: 20%;
+    border-radius: 18%;
+}
+
+#headerloginsign:hover {
+    background-color: rgb(122, 32, 47);
+    color: white;
+    border-color: white;
+    margin-left: 20%;
+    border-radius: 18%;
+} */
+
+#headerloginsign {
+    border-radius: 18px;
+    background-color: white;
+    border: 1px solid rgb(122, 32, 47);
+    color: rgb(122, 32, 47);
+    /* width: 90%; */
+    margin-left: 8%;
+}
+
+#headerloginsign:hover {
+    background-color: rgb(122, 32, 47);
+    border: 1px solid white;
+    color: white;
+}
+
+#logoutId {
+    border-radius: 18px;
+    background-color: white;
+    border: 1px solid rgb(122, 32, 47);
+    color: rgb(122, 32, 47);
+    ;
+    margin-left: 20%;
+}
+
+#logoutId:hover {
+    background-color: rgb(122, 32, 47);
+    border: 1px solid white;
+    color: white;
 }
 
 img {

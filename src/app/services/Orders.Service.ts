@@ -1,7 +1,8 @@
 import { HttpHeaders, HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { TokenStorageService } from "./tokenStorage.service";
-import { Observable } from "rxjs";
+import { Observable, Subject } from "rxjs";
+import { Orders } from "../models/Orders.model";
 
 const API = 'http://localhost:8080/api/orders/';
 
@@ -16,6 +17,7 @@ const getHttpOptions = (token: String) => {
 
 @Injectable()
 export class OrdersService {
+updatePendingOrderList= new Subject<Orders[]>();
 
     constructor(private http: HttpClient,
         private tokenStorageService: TokenStorageService) {
@@ -34,5 +36,9 @@ export class OrdersService {
     onGetAOrderById(id): Observable<any> {
         const localHttpOptions = getHttpOptions(this.tokenStorageService.getToken());
         return this.http.get(API + 'order/' + id, localHttpOptions)
+    }
+    onUpdateOrderStatusByOrderId(status,id):Observable<any>
+    {  const localHttpOptions = getHttpOptions(this.tokenStorageService.getToken());
+        return this.http.put(API + 'order-status/' + id+"/"+status,localHttpOptions)
     }
 }   
