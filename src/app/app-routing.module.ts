@@ -14,6 +14,11 @@ import { OverallInquiriesComponent } from './Admin/overall-inquiries/overall-inq
 import { AdminInquiryComponent } from './Admin/overall-inquiries/admin-inquiry/admin-inquiry.component';
 import { AdminInquiryItemReplyComponent } from './Admin/overall-inquiries/admin-inquiry/admin-inquiry-item-reply/admin-inquiry-item-reply.component';
 import { AdminInquiryReplyComponent } from './Admin/overall-inquiries/admin-inquiry-reply/admin-inquiry-reply.component';
+import { AdminOrdersComponent } from './Admin/admin-orders/admin-orders.component';
+import { PendingListComponent } from './Admin/admin-orders/admin-pending-orders/pending-list/pending-list.component';
+import { AdminPendingOrdersComponent } from './Admin/admin-orders/admin-pending-orders/admin-pending-orders.component';
+import { CartOrdersItemComponent } from './Admin/admin-orders/admin-pending-orders/cart-orders-list/cart-orders-item/cart-orders-item.component';
+import { CartOrdersSelectedViewComponent } from './Admin/admin-orders/admin-pending-orders/cart-orders-selected-view/cart-orders-selected-view.component';
 
 const appRoutes: Routes =
     [
@@ -41,20 +46,26 @@ const appRoutes: Routes =
                 { path: 'category', component: AddProductComponent }
             ]
         },
-        // {path:'inquiries',component:OverallInquiriesComponent,children}
         {
             path: 'inquiries', component: OverallInquiriesComponent, children:
                 [
                     { path: '', redirectTo: '/inquiries/inquiry', pathMatch: 'full' },
-                { path: 'replies', redirectTo: '/inquiries/replies', pathMatch: 'full' },
-                {
-                    path: 'inquiry', component: AdminInquiryComponent, children: [
-                        { path: ':id', component: AdminInquiryItemReplyComponent }
-                    ]
-                },
-                { path: 'replies', component: AdminInquiryReplyComponent }
+                    { path: 'replies', redirectTo: '/inquiries/replies', pathMatch: 'full' },
+                    {
+                        path: 'inquiry', component: AdminInquiryComponent, children: [
+                            { path: ':id', component: AdminInquiryItemReplyComponent }
+                        ]
+                    },
+                    { path: 'replies', component: AdminInquiryReplyComponent }
                 ]
         },
+        {
+            path: 'orders', component: AdminOrdersComponent, children: [
+                { path: '', redirectTo: '/orders/pending', pathMatch: 'full' },
+                { path: 'pending', component: AdminPendingOrdersComponent,children:[
+                    {path:':id',component:CartOrdersSelectedViewComponent}] }
+            ]
+        }
 
         // {
         //     path: 'inquiries', component: AdminInquiryComponent, children: [

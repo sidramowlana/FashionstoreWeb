@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-pending-item',
@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PendingItemComponent implements OnInit {
 
+  @Input() pendingElement;
+  @Input() index;
   constructor() { }
 
   ngOnInit() {

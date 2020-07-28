@@ -1,3 +1,6 @@
-<p>
-  pending-list works!
-</p>
+<div class="row">
+    <div class="container-sm">
+        <app-pending-item class="pendingItem" *ngFor="let item of pendingOrdersList" [pendingElement]="item" [index]="item.ordersId">
+        </app-pending-item>
+    </div>
+</div>

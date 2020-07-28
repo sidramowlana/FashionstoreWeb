@@ -38,12 +38,15 @@ import { OverallInquiriesComponent } from './Admin/overall-inquiries/overall-inq
 import { AdminInquiryReplyComponent } from './Admin/overall-inquiries/admin-inquiry-reply/admin-inquiry-reply.component';
 import { ProductInquiryService } from './services/ProductInquiry.service';
 import { BarRatingModule } from "ngx-bar-rating";
-import { RateReview } from './models/RateReview.model';
 import { RateReviewServie } from './services/RateReview.service';
 import { AdminOrdersComponent } from './Admin/admin-orders/admin-orders.component';
-import { AdminPendingOrdersComponent } from './Admin/adminOrders/admin-pending-orders/admin-pending-orders.component';
-import { PendingListComponent } from './Admin/adminOrders/admin-pending-orders/pending-list/pending-list.component';
-import { PendingItemComponent } from './Admin/adminOrders/adminPendingOrders/pending-item/pending-item.component';
+import { AdminPendingOrdersComponent } from './Admin/admin-orders/admin-pending-orders/admin-pending-orders.component';
+import { PendingListComponent } from './Admin/admin-orders/admin-pending-orders/pending-list/pending-list.component';
+import { PendingItemComponent } from './Admin/admin-orders/admin-pending-orders/pending-list/pending-item/pending-item.component';
+import { OrdersService } from './services/Orders.Service';
+import { CartOrdersListComponent } from './Admin/admin-orders/admin-pending-orders/cart-orders-list/cart-orders-list.component';
+import { CartOrdersItemComponent } from './Admin/admin-orders/admin-pending-orders/cart-orders-list/cart-orders-item/cart-orders-item.component';
+import { CartOrdersSelectedViewComponent } from './Admin/admin-orders/admin-pending-orders/cart-orders-selected-view/cart-orders-selected-view.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +79,10 @@ import { PendingItemComponent } from './Admin/adminOrders/adminPendingOrders/pen
     AdminOrdersComponent,
     AdminPendingOrdersComponent,
     PendingListComponent,
-    PendingItemComponent
+    PendingItemComponent,
+    CartOrdersListComponent,
+    CartOrdersItemComponent,
+    CartOrdersSelectedViewComponent
   ],
   imports: [
     BrowserModule,
@@ -87,7 +93,7 @@ import { PendingItemComponent } from './Admin/adminOrders/adminPendingOrders/pen
     AppRoutingModule,
     BarRatingModule
     ],
-  providers: [AuthenticationService,TokenStorageService,ProductService,WishlistService,CartService,TagService,ProductInquiryService,RateReviewServie,
+  providers: [AuthenticationService,TokenStorageService,ProductService,WishlistService,CartService,TagService,ProductInquiryService,RateReviewServie,OrdersService,
     {
       provide:HTTP_INTERCEPTORS, 
       useClass:AuthInterceptor, 
