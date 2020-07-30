@@ -1,0 +1,21 @@
+.productItem {
+    margin: 1%;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+}
+
+.item_list_div {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.containersm {
+    flex-wrap: row wrap;
+}

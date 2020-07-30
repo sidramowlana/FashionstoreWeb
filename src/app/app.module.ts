@@ -1,8 +1,10 @@
 import { NgSelectModule } from '@ng-select/ng-select';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
@@ -48,7 +50,17 @@ import { CartOrdersListComponent } from './Admin/admin-orders/admin-pending-orde
 import { CartOrdersItemComponent } from './Admin/admin-orders/admin-pending-orders/cart-orders-list/cart-orders-item/cart-orders-item.component';
 import { CartOrdersSelectedViewComponent } from './Admin/admin-orders/admin-pending-orders/cart-orders-selected-view/cart-orders-selected-view.component';
 import { AdminCancelCompleteOrderTableComponent } from './Admin/admin-orders/admin-cancel-complete-order-table/admin-cancel-complete-order-table.component';
-import { ProductItemCardComponent } from './Customers/product-item-card/product-item-card.component';
+import { ProductItemCardComponent } from './Customer/product-items-list/product-item-card/product-item-card.component';
+import { ProductItemsListComponent } from './Customer/product-items-list/product-items-list.component';
+import { ProductItemDetailComponent } from './Customer/product-item-view/product-item-detail/product-item-detail.component';
+import { ProductRateReviewDetailComponent } from './Customer/product-item-view/product-rate-review-detail/product-rate-review-detail.component';
+import { ProductItemViewComponent } from './Customer/product-item-view/product-item-view.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RateItemComponent } from './Customer/product-item-view/product-rate-review-detail/rate-list/rate-item/rate-item.component';
+import { RateListComponent } from './Customer/product-item-view/product-rate-review-detail/rate-list/rate-list.component';
+import { ChildComponent } from './Customer/product-item-view/product-rate-review-detail/rate-list/child/child.component';
+import { AddProductInquiryComponent } from './add-product-inquiry/add-product-inquiry.component';
 
 @NgModule({
   declarations: [
@@ -86,23 +98,37 @@ import { ProductItemCardComponent } from './Customers/product-item-card/product-
     CartOrdersItemComponent,
     CartOrdersSelectedViewComponent,
     AdminCancelCompleteOrderTableComponent,
-    ProductItemCardComponent
+    ProductItemCardComponent,
+    ProductItemsListComponent,
+    ProductItemDetailComponent,
+    ProductRateReviewDetailComponent,
+    ProductItemViewComponent,
+    RateItemComponent,
+    RateListComponent,
+    ChildComponent,
+    AddProductInquiryComponent
   ],
   imports: [
     BrowserModule,
+    NgbModule,
     NgSelectModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
     AppRoutingModule,
-    BarRatingModule
+    BarRatingModule,
+    ToastrModule.forRoot()
     ],
   providers: [AuthenticationService,TokenStorageService,ProductService,WishlistService,CartService,TagService,ProductInquiryService,RateReviewServie,OrdersService,
     {
       provide:HTTP_INTERCEPTORS, 
       useClass:AuthInterceptor, 
       multi:true
-    }],
+      }, {
+        provide: LocationStrategy,
+        useClass: HashLocationStrategy
+      }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

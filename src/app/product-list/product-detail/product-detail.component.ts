@@ -31,10 +31,13 @@ export class ProductDetailComponent implements OnInit {
   constructor(private productService: ProductService,
     private wishlistService: WishlistService,
      private cartService: CartService,
-      private activatedRoute: ActivatedRoute) { }
+      private activatedRoute: ActivatedRoute) {
+      }
 
   ngOnInit() {
-
+    console.log('================')
+    const id = this.activatedRoute.snapshot.params.id
+    console.log("this is id: " + id);
     this.activatedRoute.params.subscribe(
       (params: Params) => {
         this.id = +params['id'];

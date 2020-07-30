@@ -1,0 +1,53 @@
+<div class="container-sm" id="overall">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="container_main container-sm">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <div class="container" style="display: flex;justify-content: flex-end;">
+                            <span style="position: absolute;" id="notFavourite" *ngIf="isFavourite==false"><i class=" heart fa fa-heart-o"></i></span>
+                            <span style="position: absolute;" id="favourite" *ngIf="isFavourite==true"><i class="heart fa fa-heart"></i></span>
+                        </div><img [attr.src]="scaledImage" class="imageView">
+
+                        <section>
+                            <bar-rating [(rate)]="average" [readOnly]="true" [max]="5"></bar-rating>
+                        </section>
+                        <a type="button" (click)="onRatesReviews(id)">Rate and reviews</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h4>{{productName}}</h4>
+            <h5>${{price}}.00</h5>
+
+            <p id="quantity"><i>Available stock ( {{quantity}} )</i></p>
+            <p style="width: 100vh;">{{description}}</p>
+            <div class="row" style="margin: 0;">
+                <div class="col-md-6" id="sizecol">
+                    <p style="margin-bottom: 0;">Select size </p>
+                    <select id="selectSizeId" class="form-control" #selectedSize>
+                        <option *ngFor="let s of size" id="size">{{s}}</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6" id="qtycol">
+                    <p style="margin-bottom: 0;">Quantity </p>
+                    <input class="form-control" id="quantityId" type="number" #selectedQuantity required min="1" max="{{quantity}}">
+                </div>
+            </div>
+            <div class="row" style="margin: 0;">
+                <button class="btn btn-primary" id="addCart" (click)="onAddCart(selectedQuantity,selectedSize)"><i class="fa fa-opencart"></i> &nbsp; Add Cart</button>
+                <div class="wishlistInquiry">
+                    <button class="btn btn-primary" *ngIf="isFavourite==true" id="wishlist" (click)="onAddRemoveWishlist(id)">
+                        <i class="fa fa-bookmark"  style="color: red;"></i> &nbsp; Wishlist</button>
+                    <button class="btn btn-primary" *ngIf="isFavourite==false" id="wishlist" (click)="onAddRemoveWishlist(id)">
+                        <i class="fa fa-bookmark"  style="color: white"></i> &nbsp; Wishlist</button>
+                    <button class="btn btn-primary" id="inquiry" (click)="onAskInquiry(id)">
+                        <i class="fa fa-pencil fa-fw"  style="color: white"></i> &nbsp; Inquiry</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

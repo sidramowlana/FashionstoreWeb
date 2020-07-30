@@ -1,0 +1,73 @@
+.container {
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#btnCartId,
+#btnWishlistId,
+#btnDetailsId {
+    border-radius: 18px;
+    background-color: white;
+    border: 1px solid rgb(122, 32, 47);
+    color: rgb(122, 32, 47);
+}
+
+#btnCartId:hover,
+#btnWishlistId:hover,
+#btnDetailsId:hover {
+    background-color: rgb(122, 32, 47);
+    border: 1px solid white;
+    color: white;
+}
+
+.imageView {
+    height: 300px;
+    width: 100%;
+}
+
+.card-body {
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+button {
+    width: 100%;
+    margin: 3px 0px;
+}
+
+#notFavourite {
+    color: white;
+    text-shadow: 1px 1px 1px;
+}
+
+#favourite {
+    color: red;
+    text-shadow: 1px 1px 1px;
+}
+
+#container_overall {
+    justify-content: center;
+    margin-top: 2%;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+button {
+    border-radius: 18px;
+    background-color: white;
+    border: 1px solid rgb(122, 32, 47);
+    color: rgb(122, 32, 47);
+}
+
+button:hover {
+    background-color: rgb(122, 32, 47);
+    border: 1px solid white;
+    color: white;
+}

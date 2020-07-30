@@ -20,19 +20,37 @@ import { AdminPendingOrdersComponent } from './Admin/admin-orders/admin-pending-
 import { CartOrdersItemComponent } from './Admin/admin-orders/admin-pending-orders/cart-orders-list/cart-orders-item/cart-orders-item.component';
 import { CartOrdersSelectedViewComponent } from './Admin/admin-orders/admin-pending-orders/cart-orders-selected-view/cart-orders-selected-view.component';
 import { AdminCancelCompleteOrderTableComponent } from './Admin/admin-orders/admin-cancel-complete-order-table/admin-cancel-complete-order-table.component';
+import { ProductItemsListComponent } from './Customer/product-items-list/product-items-list.component';
+import { ProductItemCardComponent } from './Customer/product-items-list/product-item-card/product-item-card.component';
+import { ProductItemViewComponent } from './Customer/product-item-view/product-item-view.component';
+import { ProductItemDetailComponent } from './Customer/product-item-view/product-item-detail/product-item-detail.component';
+import { ProductRateReviewDetailComponent } from './Customer/product-item-view/product-rate-review-detail/product-rate-review-detail.component';
 
 const appRoutes: Routes =
     [
         { path: '', redirectTo: '/home', pathMatch: 'full' },
-        { path: 'home', redirectTo: '/home', pathMatch: 'full' },
         { path: 'null', redirectTo: '/home', pathMatch: 'full' },
         {
             path: 'home', component: HomeComponent,
             children: [
-                { path: '', component: ProductListComponent },
-                { path: ':id', component: ProductDetailComponent }
+                { path: '', component: ProductItemsListComponent },
+                {path:'products',component:ProductItemViewComponent,children:[
+                    {path:'details/:id',component:ProductItemDetailComponent},
+                    {path:'ratesReviews/:id',component:ProductRateReviewDetailComponent}
+                ] },
+                
+              
             ]
         },
+
+
+
+        // {path:':id',redirectTo:':id/details',pathMatch:'full'},
+        // {path:':id',component:ProductItemViewComponent,children:[
+        //     {path:'details',component:ProductItemDetailComponent}
+        //     ]},
+
+
         { path: 'register', component: RegisterComponent },
         { path: 'login', component: LoginComponent },
         {
@@ -70,16 +88,6 @@ const appRoutes: Routes =
                 { path: 'cancel-complete', component: AdminCancelCompleteOrderTableComponent }
             ]
         }
-
-        // {
-        //     path: 'inquiries', component: AdminInquiryComponent, children: [
-        //         { path: ':id', component: AdminInquiryItemReplyComponent },
-        //         { path: 'replies-all', component: AdminInquiriesRepliesListComponent }
-
-        //     ]
-        // },
-        // { path: 'replies', component: AdminInquiryListComponent }
-
 
     ];
 @NgModule({

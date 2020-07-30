@@ -1,0 +1,30 @@
+<div class="container_main">
+    <div class="card card-flip h-100 text-center">
+        <div class="card-front text-white">
+            <div class="card-body">
+                <!--index and router link here -->
+                <div class="container" style="display: flex;
+                justify-content: flex-end;">
+                    <span style="position: absolute;" id="notFavourite" *ngIf="isFavourite==false"><i class=" heart fa fa-heart-o"></i></span>
+                    <span style="position: absolute;" id="favourite" *ngIf="isFavourite==true"><i class="heart fa fa-heart"></i></span>
+                </div><img [attr.src]="productElement?.scaledImage" class="imageView">
+
+                <section>
+                    <bar-rating [(rate)]="average" [readOnly]="true" [max]="5"></bar-rating>
+                </section>
+            </div>
+        </div>
+        <div class="card-back bg-white">
+            <div class="card-body">
+                <h5 class="card-title">{{productElement.productName}}</h5>
+                <h5 style="color: rgb(122, 32, 47);" class="card-text">${{(productElement.price).toFixed(2)}}</h5>
+                <p class="card-text">{{productElement.shortDescription}}</p>
+            </div>
+            <div>
+                <!-- <button id="btnCartId" (click)="onAddToCart()" class="btn btn-outline-primary">Add to cart</button> -->
+                <button id="btnWishlistId" (click)="onAddRemoveWishList(productElement.productId)" class="btn btn-outline-primary"> Wishlist</button>
+                <button id="btnDetailsId" (click)="onDetails(productElement.productId)" class="btn btn-outline-primary"> Details</button>
+            </div>
+        </div>
+    </div>
+</div>

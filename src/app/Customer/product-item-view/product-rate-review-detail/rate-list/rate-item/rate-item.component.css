@@ -1,0 +1,31 @@
+#reviews {
+    /* width: 700px; */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.card-body {
+    margin: 2%;
+    padding: 0;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.nameDateContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ratingStarContainer {
+    /* margin-top: -30px; */
+    display: flex;
+    justify-content: space-between;
+}

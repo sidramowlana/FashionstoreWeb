@@ -46,16 +46,12 @@
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-user-o" aria-hidden="true"></i></a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <ng-template [ngIf]="authenticationService.loggedIn()">
+                    <ng-template [ngIf]="!authenticationService.loggedIn()">
                         <button class="btn btn-primary" id="headerloginsign" (click)="onLoginSignup()">Login / SignUp</button>
                     </ng-template>
                     <ng-template [ngIf]="authenticationService.loggedIn()">
                         <button class="btn btn-primary" id="logoutId" (click)="onLogout()">Logout</button>
                     </ng-template>
-
-                    <!-- <span class="caret">&nbsp; -->
-                    <!-- <button class="btn btn-primary"  [ngIf]="!authenticationService.loggedIn()" id="headerloginsign">Login / SignUp</button>
-                    </span> -->
                     <div class="dropdown-divider"></div>
 
                     <a class="dropdown-item" routerLink="orders/pending"><i class="fa fa-check-circle" aria-hidden="true"></i> &nbsp; Orders</a>

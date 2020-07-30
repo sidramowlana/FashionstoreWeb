@@ -1,0 +1,33 @@
+<!-- <div class="container-sm" id="container_overall">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="container_main container-sm">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <div class="container" style="display: flex;
+              justify-content: flex-end;">
+                            <span style="position: absolute;" id="notFavourite" *ngIf="isFavourite==false"><i class=" heart fa fa-heart-o"></i></span>
+                            <span style="position: absolute;" id="favourite" *ngIf="isFavourite==true"><i class="heart fa fa-heart"></i></span>
+                        </div><img [attr.src]="scaledImage" class="imageView">
+
+                        <section>
+                            <bar-rating [(rate)]="average" [readOnly]="true" [max]="5"></bar-rating>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <router-outlet></router-outlet>
+
+        </div>
+        <div class="col-md-2 myclass">
+            <button class="btn btn-primary" (click)="onViewDetails(id)" *ngIf="!isClicked">Details</button>
+            <button class="btn btn-primary" (click)="onViewRateReviewDetails(id)" *ngIf='isClicked'>Rate and Reviews</button>
+
+        </div>
+
+    </div>
+
+</div> -->
+<router-outlet></router-outlet>

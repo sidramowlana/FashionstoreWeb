@@ -10,7 +10,7 @@ import { TokenStorageService } from '../services/tokenStorage.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private tokenStorageService:TokenStorageService,private router:Router, private activatedRoute:ActivatedRoute) { }
+  constructor(private tokenStorageService:TokenStorageService,private router:Router, private activatedRoute:ActivatedRoute,private authenticationService:AuthenticationService) { }
 
   ngOnInit() {
   }
