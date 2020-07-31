@@ -1,0 +1,11 @@
+<div class="containersm">
+    <div class="headerContainer">
+        <hr>
+        <p>My Wishlist</p>
+        <hr>
+    </div>
+    <div class="item_list_div">
+        <img *ngIf="count==0" src="https://ebookbazaar.com/images/empty_wishlist.png" class="img-fluid">
+        <app-wishlist-item class="productItem" *ngFor="let item of wishlist" [wishlistElement]="item"></app-wishlist-item>
+    </div>
+</div>

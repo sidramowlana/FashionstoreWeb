@@ -25,6 +25,8 @@ import { ProductItemCardComponent } from './Customer/product-items-list/product-
 import { ProductItemViewComponent } from './Customer/product-item-view/product-item-view.component';
 import { ProductItemDetailComponent } from './Customer/product-item-view/product-item-detail/product-item-detail.component';
 import { ProductRateReviewDetailComponent } from './Customer/product-item-view/product-rate-review-detail/product-rate-review-detail.component';
+import { WishlistItemComponent } from './Customer/wishlist-item-list/wishlist-item/wishlist-item.component';
+import { WishlistItemListComponent } from './Customer/wishlist-item-list/wishlist-item-list.component';
 
 const appRoutes: Routes =
     [
@@ -34,23 +36,17 @@ const appRoutes: Routes =
             path: 'home', component: HomeComponent,
             children: [
                 { path: '', component: ProductItemsListComponent },
-                {path:'products',component:ProductItemViewComponent,children:[
-                    {path:'details/:id',component:ProductItemDetailComponent},
-                    {path:'ratesReviews/:id',component:ProductRateReviewDetailComponent}
-                ] },
-                
-              
+                {
+                    path: 'products', component: ProductItemViewComponent, children: [
+                        { path: 'details/:id', component: ProductItemDetailComponent },
+                        { path: 'ratesReviews/:id', component: ProductRateReviewDetailComponent }
+                    ]
+                },
+
+
             ]
         },
-
-
-
-        // {path:':id',redirectTo:':id/details',pathMatch:'full'},
-        // {path:':id',component:ProductItemViewComponent,children:[
-        //     {path:'details',component:ProductItemDetailComponent}
-        //     ]},
-
-
+        { path: 'my-wishlist', component: WishlistItemListComponent },
         { path: 'register', component: RegisterComponent },
         { path: 'login', component: LoginComponent },
         {

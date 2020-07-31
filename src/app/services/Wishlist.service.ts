@@ -21,7 +21,7 @@ const getHttpOptions = (token: String) => {
 @Injectable()
 export class WishlistService {
     wishListFavouriteChange = new Subject<boolean>();
-    // vehicleEditChange = new Subject<Vehicle>();
+    wishListListChange = new Subject<number>();
 
     constructor(private http: HttpClient, private tokenStorageService: TokenStorageService) {
 
@@ -39,6 +39,9 @@ export class WishlistService {
         const localHttpOptions = getHttpOptions(this.tokenStorageService.getToken());
         return this.http.get<any>(API+"product/"+productId,localHttpOptions);
     }
-
+    onGetAllWishlistByUserIdService():Observable<any>{
+        const localHttpOptions = getHttpOptions(this.tokenStorageService.getToken());
+        return this.http.get(API+"wishlistAll",localHttpOptions)
+    }
 
 }

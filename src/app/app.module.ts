@@ -7,6 +7,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HashLocationStrategy, LocationStrategy, DatePipe} from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
+import { BarRatingModule } from "ngx-bar-rating";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { ProductItemComponent } from './product-list/product-item/product-item.component';
@@ -16,18 +19,11 @@ import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { AdminProductComponent } from './Admin/admin-product/admin-product.component';
 import { AddProductComponent } from './Admin/admin-product/add-product/add-product.component';
+import { AdminCategoryComponent } from './Admin/admin-category/admin-category.component';
 import { AdminProductItemComponent } from './Admin/admin-product/admin-product-list/admin-product-item/admin-product-item.component';
 import { AdminProductListComponent } from './Admin/admin-product/admin-product-list/admin-product-list.component';
 import { AddCategoryComponent } from './Admin/admin-category/add-category/add-category.component';
 import { CategoryTableComponent } from './Admin/admin-category/category-table/category-table.component';
-import { AuthenticationService } from './services/authentication.service';
-import { TokenStorageService } from './services/tokenStorage.service';
-import { ProductService } from './services/Product.service';
-import { WishlistService } from './services/Wishlist.service';
-import { CartService } from './services/Cart.service';
-import { TagService } from './services/Tag.service';
-import { AuthInterceptor } from './helper/authInterceptorProviders';
-import { AdminCategoryComponent } from './Admin/admin-category/admin-category.component';
 import { EditViewProductComponent } from './Admin/admin-product/edit-view-product/edit-view-product.component';
 import { EditProductComponent } from './Admin/admin-product/edit-product/edit-product.component';
 import { ProductSearchPipe } from './Pipe/product-search.pipe';
@@ -38,14 +34,10 @@ import { AdminInquiryItemComponent } from './Admin/overall-inquiries/admin-inqui
 import { AdminInquiryItemReplyComponent } from './Admin/overall-inquiries/admin-inquiry/admin-inquiry-item-reply/admin-inquiry-item-reply.component';
 import { OverallInquiriesComponent } from './Admin/overall-inquiries/overall-inquiries.component';
 import { AdminInquiryReplyComponent } from './Admin/overall-inquiries/admin-inquiry-reply/admin-inquiry-reply.component';
-import { ProductInquiryService } from './services/ProductInquiry.service';
-import { BarRatingModule } from "ngx-bar-rating";
-import { RateReviewServie } from './services/RateReview.service';
 import { AdminOrdersComponent } from './Admin/admin-orders/admin-orders.component';
 import { AdminPendingOrdersComponent } from './Admin/admin-orders/admin-pending-orders/admin-pending-orders.component';
 import { PendingListComponent } from './Admin/admin-orders/admin-pending-orders/pending-list/pending-list.component';
 import { PendingItemComponent } from './Admin/admin-orders/admin-pending-orders/pending-list/pending-item/pending-item.component';
-import { OrdersService } from './services/Orders.Service';
 import { CartOrdersListComponent } from './Admin/admin-orders/admin-pending-orders/cart-orders-list/cart-orders-list.component';
 import { CartOrdersItemComponent } from './Admin/admin-orders/admin-pending-orders/cart-orders-list/cart-orders-item/cart-orders-item.component';
 import { CartOrdersSelectedViewComponent } from './Admin/admin-orders/admin-pending-orders/cart-orders-selected-view/cart-orders-selected-view.component';
@@ -55,12 +47,24 @@ import { ProductItemsListComponent } from './Customer/product-items-list/product
 import { ProductItemDetailComponent } from './Customer/product-item-view/product-item-detail/product-item-detail.component';
 import { ProductRateReviewDetailComponent } from './Customer/product-item-view/product-rate-review-detail/product-rate-review-detail.component';
 import { ProductItemViewComponent } from './Customer/product-item-view/product-item-view.component';
-import { ToastrModule } from 'ngx-toastr';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RateItemComponent } from './Customer/product-item-view/product-rate-review-detail/rate-list/rate-item/rate-item.component';
 import { RateListComponent } from './Customer/product-item-view/product-rate-review-detail/rate-list/rate-list.component';
 import { ChildComponent } from './Customer/product-item-view/product-rate-review-detail/rate-list/child/child.component';
-import { AddProductInquiryComponent } from './add-product-inquiry/add-product-inquiry.component';
+import { AddProductInquiryComponent } from './Customer/product-item-view/add-product-inquiry/add-product-inquiry.component';
+import { AuthenticationService } from './services/authentication.service';
+import { TokenStorageService } from './services/tokenStorage.service';
+import { ProductService } from './services/Product.service';
+import { WishlistService } from './services/Wishlist.service';
+import { CartService } from './services/Cart.service';
+import { TagService } from './services/Tag.service';
+import { RateReviewServie } from './services/RateReview.service';
+import { OrdersService } from './services/Orders.Service';
+import { ProductInquiryService } from './services/ProductInquiry.service';
+import { AuthInterceptor } from './helper/authInterceptorProviders';
+import { WishlistItemComponent } from './Customer/wishlist-item-list/wishlist-item/wishlist-item.component';
+import { WishlistItemListComponent } from './Customer/wishlist-item-list/wishlist-item-list.component';
+
+
 
 @NgModule({
   declarations: [
@@ -106,7 +110,9 @@ import { AddProductInquiryComponent } from './add-product-inquiry/add-product-in
     RateItemComponent,
     RateListComponent,
     ChildComponent,
-    AddProductInquiryComponent
+    AddProductInquiryComponent,
+    WishlistItemComponent,
+    WishlistItemListComponent
   ],
   imports: [
     BrowserModule,
@@ -120,7 +126,14 @@ import { AddProductInquiryComponent } from './add-product-inquiry/add-product-in
     BarRatingModule,
     ToastrModule.forRoot()
     ],
-  providers: [AuthenticationService,TokenStorageService,ProductService,WishlistService,CartService,TagService,ProductInquiryService,RateReviewServie,OrdersService,DatePipe,
+  providers: [AuthenticationService,
+    TokenStorageService,
+    ProductService,
+    WishlistService,
+    CartService,
+    TagService,
+    RateReviewServie,OrdersService,DatePipe,
+    ProductInquiryService,
     {
       provide:HTTP_INTERCEPTORS, 
       useClass:AuthInterceptor, 

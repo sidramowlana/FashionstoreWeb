@@ -2,7 +2,6 @@ import { HttpHeaders, HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { TokenStorageService } from "./tokenStorage.service";
 import { Observable, Subject } from "rxjs";
-import { Product } from "../models/Product.model";
 import { ProductInquiry } from "../models/ProductInquiry.model";
 
 const API = 'http://localhost:8080/api/inquiry/';

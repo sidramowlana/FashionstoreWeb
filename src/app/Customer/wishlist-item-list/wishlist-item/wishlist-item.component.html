@@ -1,0 +1,16 @@
+<div class="container_main">
+    <div class="card card-flip h-100 text-center">
+        <div class="card-body">
+            <div class="container" style="display: flex;
+              justify-content: flex-end;">
+                <span style="position: absolute; cursor: pointer;" id="remove" type="button" (click)="onRemoveWishList(wishlistElement.product.productId)"><i class="fa fa-times"></i></span>
+            </div>
+            <img [attr.src]="wishlistElement?.product.scaledImage" class="imageView">
+            <div class="productData">
+
+                <h5>{{wishlistElement.product.productName}}</h5>
+                <p>$ {{(wishlistElement.product.price).toFixed(2)}}</p>
+            </div>
+        </div>
+    </div>
+</div>

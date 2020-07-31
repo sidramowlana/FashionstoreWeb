@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ProductInquiryService } from '../services/ProductInquiry.service';
 import { DatePipe } from '@angular/common';
 import { ActivatedRoute, Params } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { ProductInquiryService } from 'src/app/services/ProductInquiry.service';
 
 @Component({
   selector: 'app-add-product-inquiry',
@@ -12,11 +12,14 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AddProductInquiryComponent implements OnInit {
   inquiryForm:FormGroup
-  constructor(private toastr: ToastrService,
-    private activatedRoute:ActivatedRoute,private productInquiryService:ProductInquiryService,public datepipe: DatePipe) { }
   currentDate = new Date();
   currentDateFormatted;
   id;
+  
+  constructor(private toastr: ToastrService,
+    private activatedRoute:ActivatedRoute,
+    private productInquiryService:ProductInquiryService,private datepipe: DatePipe) { }
+ 
   ngOnInit() {
     this.initForm();
     this.currentDateFormatted = this.datepipe.transform(this.currentDate, 'dd/MM/yyyy hh:mm')
@@ -45,7 +48,7 @@ export class AddProductInquiryComponent implements OnInit {
     err=>{
       this.toastr.error("Couldn't submit","Please try again later");
 
-    })
+    });
 
   }
 }
