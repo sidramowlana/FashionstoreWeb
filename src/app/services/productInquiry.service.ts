@@ -23,6 +23,14 @@ export class ProductInquiryService {
     constructor(private http: HttpClient,
         private tokenStorageService: TokenStorageService) {
     }
+    onAddProductInquiryByProductIdService(id,formData,date):Observable<any>{
+        const localHttpOptions = getHttpOptions(this.tokenStorageService.getToken());
+        console.log('date: '+date)
+        return this.http.post(API + 'product/'+id,{
+            question:formData.value.question,
+            date:date
+        },localHttpOptions);    
+    }
 
     onGetAllInquiriesNotAnswered(isAnswered:boolean): Observable<any> {
         const localHttpOptions = getHttpOptions(this.tokenStorageService.getToken());

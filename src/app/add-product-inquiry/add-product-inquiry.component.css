@@ -1,0 +1,31 @@
+#footerSendbtn {
+    border-radius: 18px;
+    background-color: rgb(122, 32, 47);
+    border: 1px solid rgb(122, 32, 47);
+    color: white;
+}
+
+#footerClosebtn {
+    border-radius: 18px;
+    background-color: white;
+    border: 1px solid rgb(122, 32, 47);
+    color: rgb(122, 32, 47)
+}
+
+.modal-footer {
+    display: flex;
+}
+
+#footerSendbtn:hover {
+    border-radius: 18px;
+    background-color: white;
+    border: 1px solid rgb(122, 32, 47);
+    color: rgb(122, 32, 47);
+}
+
+#footerClosebtn:hover {
+    border-radius: 18px;
+    background-color: rgb(122, 32, 47);
+    border: 1px solid rgb(122, 32, 47);
+    color: white;
+}

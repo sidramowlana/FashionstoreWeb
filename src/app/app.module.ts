@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {HashLocationStrategy, LocationStrategy} from '@angular/common';
+import {HashLocationStrategy, LocationStrategy, DatePipe} from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
@@ -120,7 +120,7 @@ import { AddProductInquiryComponent } from './add-product-inquiry/add-product-in
     BarRatingModule,
     ToastrModule.forRoot()
     ],
-  providers: [AuthenticationService,TokenStorageService,ProductService,WishlistService,CartService,TagService,ProductInquiryService,RateReviewServie,OrdersService,
+  providers: [AuthenticationService,TokenStorageService,ProductService,WishlistService,CartService,TagService,ProductInquiryService,RateReviewServie,OrdersService,DatePipe,
     {
       provide:HTTP_INTERCEPTORS, 
       useClass:AuthInterceptor, 

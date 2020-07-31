@@ -126,5 +126,6 @@ export class ProductItemDetailComponent implements OnInit {
   onRatesReviews(index){
     this.router.navigate(['home/products/ratesReviews/'+index]);
   }
+
 }
 

@@ -42,12 +42,23 @@
                     <button class="btn btn-primary" *ngIf="isFavourite==true" id="wishlist" (click)="onAddRemoveWishlist(id)">
                         <i class="fa fa-bookmark"  style="color: red;"></i> &nbsp; Wishlist</button>
                     <button class="btn btn-primary" *ngIf="isFavourite==false" id="wishlist" (click)="onAddRemoveWishlist(id)">
-                        <i class="fa fa-bookmark"  style="color: white"></i> &nbsp; Wishlist</button>
-                    <button class="btn btn-primary" id="inquiry" (click)="onAskInquiry(id)">
-                        <i class="fa fa-pencil fa-fw"  style="color: white"></i> &nbsp; Inquiry</button>
+                        <i class="fa fa-bookmark"></i> &nbsp; Wishlist</button>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#inquiryProductmodal" id="addInquiry">
+                        <i class="fa fa-pencil fa-fw"></i> &nbsp; Inquiry</button>
                 </div>
-
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="container">
+                                <app-add-product-inquiry class="modal fade" id="inquiryProductmodal" tabindex="-1" role="dialog" aria-labelledby="inquiryProductmodalmodal" aria-hidden="true"></app-add-product-inquiry>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+
+<!-- Modal -->
