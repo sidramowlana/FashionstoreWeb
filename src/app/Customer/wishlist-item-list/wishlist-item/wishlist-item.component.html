@@ -6,10 +6,14 @@
                 <span style="position: absolute; cursor: pointer;" id="remove" type="button" (click)="onRemoveWishList(wishlistElement.product.productId)"><i class="fa fa-times"></i></span>
             </div>
             <img [attr.src]="wishlistElement?.product.scaledImage" class="imageView">
-            <div class="productData">
-
-                <h5>{{wishlistElement.product.productName}}</h5>
-                <p>$ {{(wishlistElement.product.price).toFixed(2)}}</p>
+            <h6>{{wishlistElement.product.productName}}</h6>
+            <div class="row">
+                <div class="col-md-8">
+                    <p>$ {{(wishlistElement.product.price).toFixed(2)}}</p>
+                </div>
+                <div class="col-md-4">
+                    <button (click)="onAddCart()"><i class="fa fa-opencart"></i></button>
+                </div>
             </div>
         </div>
     </div>

@@ -63,6 +63,7 @@ import { ProductInquiryService } from './services/ProductInquiry.service';
 import { AuthInterceptor } from './helper/authInterceptorProviders';
 import { WishlistItemComponent } from './Customer/wishlist-item-list/wishlist-item/wishlist-item.component';
 import { WishlistItemListComponent } from './Customer/wishlist-item-list/wishlist-item-list.component';
+import { CartItemComponent } from './Customer/cart-item/cart-item.component';
 
 
 
@@ -112,7 +113,8 @@ import { WishlistItemListComponent } from './Customer/wishlist-item-list/wishlis
     ChildComponent,
     AddProductInquiryComponent,
     WishlistItemComponent,
-    WishlistItemListComponent
+    WishlistItemListComponent,
+    CartItemComponent
   ],
   imports: [
     BrowserModule,

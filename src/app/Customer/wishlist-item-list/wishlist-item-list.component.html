@@ -6,6 +6,6 @@
     </div>
     <div class="item_list_div">
         <img *ngIf="count==0" src="https://ebookbazaar.com/images/empty_wishlist.png" class="img-fluid">
-        <app-wishlist-item class="productItem" *ngFor="let item of wishlist" [wishlistElement]="item"></app-wishlist-item>
+        <app-wishlist-item class="wishlistItem" *ngFor="let item of wishlist" [wishlistElement]="item"></app-wishlist-item>
     </div>
 </div>

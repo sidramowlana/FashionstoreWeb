@@ -25,7 +25,8 @@ export class ProductItemCardComponent implements OnInit {
   average;
   rateReviewList;
   
-  constructor(private authService: AuthenticationService,private toastr:ToastrService,
+  constructor(private authService: AuthenticationService,
+    private toastr:ToastrService,
     private wishlistService: WishlistService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -75,6 +76,8 @@ export class ProductItemCardComponent implements OnInit {
       }
     },
       err => {
+        this.toastr.error("Somethingwent wong with the system","Could not peform the function");
+
         console.log("error is: " + err.error.error.message);
         console.log("error is: " + err.error.error.stack);
       }
