@@ -65,8 +65,10 @@ import { ProductInquiryService } from './services/ProductInquiry.service';
 import { AuthInterceptor } from './helper/authInterceptorProviders';
 import { WishlistItemComponent } from './Customer/wishlist-item-list/wishlist-item/wishlist-item.component';
 import { WishlistItemListComponent } from './Customer/wishlist-item-list/wishlist-item-list.component';
-import { CartItemComponent } from './Customer/cart-item/cart-item.component';
+import { CartItemComponent } from './Customer/cart-item-list/cart-item/cart-item.component';
 import { CartItemListComponent } from './Customer/cart-item-list/cart-item-list.component';
+import { PaymentFormComponent } from './payment-form/payment-form.component';
+import { UserService } from './services/User.service';
 
 
 
@@ -118,7 +120,8 @@ import { CartItemListComponent } from './Customer/cart-item-list/cart-item-list.
     WishlistItemComponent,
     WishlistItemListComponent,
     CartItemComponent,
-    CartItemListComponent
+    CartItemListComponent,
+    PaymentFormComponent
   ],
   imports: [
     BrowserModule,
@@ -141,6 +144,7 @@ import { CartItemListComponent } from './Customer/cart-item-list/cart-item-list.
     TagService,
     RateReviewServie,OrdersService,DatePipe,
     ProductInquiryService,
+    UserService,
     {
       provide:HTTP_INTERCEPTORS, 
       useClass:AuthInterceptor, 

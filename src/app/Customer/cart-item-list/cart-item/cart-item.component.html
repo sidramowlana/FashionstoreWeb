@@ -12,7 +12,7 @@
                 <p>{{cartElement.size}}</p>
             </div>
             <div class="qtyContainer">
-                <form class="col-7">
+                <form class="col-sm-8">
                     <ng-number-picker (valueChange)="onSubmit(index)" [(value)]="cartElement.quantity" [min]="'1'" [max]="'cartElement.product.quantity'" [step]="'1'" [pickTimer]="'100'" [size]="'small'" #qty></ng-number-picker>
                 </form>
             </div>

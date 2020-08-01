@@ -1,0 +1,45 @@
+<!-- Modal -->
+<div>
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="col mx-auto m-3 d-flex justify-content-center">
+                    <h1 class="modal-title" id="paymentmodal">Add Product</h1>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="onClose()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="paymentForm" (ngSubmit)="onPayment()">
+                    <div class="form-group">
+                        <label for="userName">User Name</label>
+                        <input id="username" class="form-control" [attr.disabled]="true" type="text" formControlName="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="contactId">Contact Number</label>
+                        <input id="contactId" class="form-control" type="text" [attr.disabled]="true" formControlName="phone">
+                    </div>
+                    <div class="form-row form-group">
+                        <div class="col">
+                            <input id="cityId" type="text" class="form-control" placeholder="City" formControlName="city">
+                        </div>
+                        <div class="col">
+                            <input id="postalCodeId" type="text" class="form-control" placeholder="Postal Code" formControlName="postalCode">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input id="addressId" class="form-control" type="text" formControlName="address" placeholder="Shipping Address">
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="onClose()">Close</button>
+                        <button type="submit" class="btn btn-primary" [disabled]="!paymentForm.valid">Make Payments</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
