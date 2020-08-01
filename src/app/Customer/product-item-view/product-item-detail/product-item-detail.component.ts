@@ -93,9 +93,10 @@ export class ProductItemDetailComponent implements OnInit {
       this.cartQuantity = this.selectedQuantity.nativeElement.value;
       const onePrice = this.price;
       this.totalAmount = onePrice * this.cartQuantity;
+      console.log(this.id+" = "+this.cartQuantity+" = "+cartSize+ " = "+this.totalAmount)
       this.cartService.onAddCartService(this.id, Number(this.cartQuantity), cartSize, this.totalAmount).subscribe(data => {
         console.log(data);
-        this.toastr.success("Successfullty added to your cart");
+        this.toastr.success("Added to your cart");
       });
     }
   }
@@ -110,14 +111,14 @@ export class ProductItemDetailComponent implements OnInit {
         this.isFavourite = false;
         console.log("item: " + this.isFavourite)
         this.wishlistService.wishListFavouriteChange.next(this.isFavourite);
-        this.toastr.success(this.message);
+        this.toastr.success(data.message);
 
       }
       else {
         this.isFavourite = true;
         console.log("item: " + this.isFavourite)
         this.wishlistService.wishListFavouriteChange.next(this.isFavourite);
-        this.toastr.success(this.message);
+        this.toastr.success("Added to your Wishlist");
 
       }
     });

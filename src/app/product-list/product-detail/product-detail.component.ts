@@ -6,6 +6,7 @@ import { Wishlist } from 'src/app/models/Wishlist.model';
 import { WishlistService } from 'src/app/services/Wishlist.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CartService } from 'src/app/services/Cart.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-product-detail',
@@ -31,6 +32,7 @@ export class ProductDetailComponent implements OnInit {
   constructor(private productService: ProductService,
     private wishlistService: WishlistService,
      private cartService: CartService,
+     private toastr:ToastrService,
       private activatedRoute: ActivatedRoute) {
       }
 
@@ -84,16 +86,19 @@ export class ProductDetailComponent implements OnInit {
 
 
   onAddRemoveWishlist() {
-    this.wishlistService.onAddRemoveWishlistService(this.id).subscribe(() => {
+    this.wishlistService.onAddRemoveWishlistService(this.id).subscribe(data => {
       if (this.isFavourite == true) {
         this.isFavourite = false;
         console.log("item: " + this.isFavourite)
         this.wishlistService.wishListFavouriteChange.next(this.isFavourite);
+        this.toastr.success(data.message);
       }
       else {
         this.isFavourite = true;
         console.log("item: " + this.isFavourite)
         this.wishlistService.wishListFavouriteChange.next(this.isFavourite);
+        this.toastr.success("Added successfully to your wishlist");
+
       }
     });
   }

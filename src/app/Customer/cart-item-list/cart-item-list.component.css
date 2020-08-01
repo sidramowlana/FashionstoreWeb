@@ -92,6 +92,7 @@ p {
 
 .containersm {
     flex-wrap: row wrap;
+    width: 100%;
 }
 
 #paymentBtn {
@@ -115,4 +116,8 @@ button:hover {
     background-color: white;
     border: 1px solid rgb(122, 32, 47);
     color: rgb(122, 32, 47);
+}
+
+#emptyCart {
+    width: 50%;
 }

@@ -3,7 +3,7 @@
         <div class="card-body">
             <div class="container" style="display: flex;
             justify-content: flex-end;">
-                <span style="position: absolute; cursor: pointer;" id="remove" type="button" (click)="onRemoveCartProduct(cartElement.product.productId)"><i class="fa fa-times"></i></span>
+                <span style="position: absolute; cursor: pointer;" id="remove" type="button" (click)="onRemoveCartProduct(cartElement.cartId)"><i class="fa fa-times"></i></span>
             </div>
             <img [attr.src]="cartElement?.product.scaledImage" class="imageView">
             <h6>{{cartElement.product.productName}}</h6>

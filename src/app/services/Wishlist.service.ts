@@ -28,8 +28,9 @@ export class WishlistService {
     }
 
     onAddRemoveWishlistService(productId): Observable<any> {
+        console.log(productId)  
         const localHttpOptions = getHttpOptions(this.tokenStorageService.getToken());
-        return this.http.post<any>(API + "add-wishlist/" + productId, {}, localHttpOptions);
+        return this.http.post(API + "add-wishlist/" + productId, {}, localHttpOptions);
     }
     getAllWishlistProductService():Observable<any>{
         const localHttpOptions = getHttpOptions(this.tokenStorageService.getToken());

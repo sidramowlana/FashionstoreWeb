@@ -57,19 +57,16 @@ export class ProductItemCardComponent implements OnInit {
  
 
   onAddRemoveWishList(productId) {
-    this.wishlistService.onAddRemoveWishlistService(productId).subscribe(() => {
+    this.wishlistService.onAddRemoveWishlistService(productId).subscribe((data) => {
       if (this.isFavourite == true) {
         this.isFavourite = false;
-        console.log("item: "+this.isFavourite)
         this.wishlistService.wishListFavouriteChange.next(this.isFavourite);
-        console.log("item: " + this.isFavourite)
         this.wishlistService.wishListFavouriteChange.next(this.isFavourite);
-        this.toastr.success("Removed from your wishlist");
+        this.toastr.success(data.message);
 
       }
       else {
         this.isFavourite = true;
-        console.log("item: " + this.isFavourite)
         this.wishlistService.wishListFavouriteChange.next(this.isFavourite);
         this.toastr.success("Added to your wishlist");
 

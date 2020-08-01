@@ -5,7 +5,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { WishlistService } from "src/app/services/Wishlist.service";
 import { Wishlist } from "src/app/models/Wishlist.model";
 import { ProductService } from "src/app/services/Product.service";
-
+import { ToastrService } from "ngx-toastr"
 
 @Component({
   selector: 'app-product-item',
@@ -25,7 +25,9 @@ export class ProductItemComponent implements OnInit {
 
   constructor(private authService: AuthenticationService,
     private wishlistService: WishlistService,
-    private router: Router,
+    private router: Router,    
+    private toastr:ToastrService,
+
     private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
@@ -43,16 +45,19 @@ export class ProductItemComponent implements OnInit {
   }
 
   onAddRemoveWishList(productId) {
-    this.wishlistService.onAddRemoveWishlistService(productId).subscribe(() => {
+    this.wishlistService.onAddRemoveWishlistService(productId).subscribe((data) => {
       if (this.isFavourite == true) {
         this.isFavourite = false;
         console.log("item: "+this.isFavourite)
         this.wishlistService.wishListFavouriteChange.next(this.isFavourite);
+        this.toastr.success(data.message);
       }
       else {
         this.isFavourite = true;
         console.log("item: "+this.isFavourite)
         this.wishlistService.wishListFavouriteChange.next(this.isFavourite);
+        this.toastr.success("Added to your wishlist");
+
       }
     },
       err => {
