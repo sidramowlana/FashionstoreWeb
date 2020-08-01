@@ -19,8 +19,13 @@ export class CartItemComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit() {
-    console.log("worker: " + this.qty.value);
+  onSubmit(cartId) {
+   let newQuantity = this.qty.value;
+    this.cartService.onUpdateCartItem(cartId,Number(newQuantity)).subscribe(()=>
+    {
+      console.log("updating")
+      this.cartService.cartLisAmounttUpdate.next();
+    })
   }
 
   onRemoveCartProduct(cartId) {

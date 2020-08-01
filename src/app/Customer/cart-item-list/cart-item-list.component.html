@@ -10,7 +10,7 @@
                     <div class="col-md-6" style="width: 100%;text-align: right;">
                         <h6>{{total}}.00</h6>
                     </div>
-                    <button (click)="onPayment()"><i class="fa fa-money" aria-hidden="true"></i>Payment</button>
+                    <button (click)="onPayment()"><i class="fa fa-money" aria-hidden="true"></i>&nbsp; Payment</button>
                 </div>
             </div>
         </div>
@@ -23,7 +23,7 @@
         </div>
         <div class="item_list_div">
             <img id="emptyCart" *ngIf="count==0" src="https://i.pinimg.com/originals/2e/ac/fa/2eacfa305d7715bdcd86bb4956209038.png" class="img-fluid">
-            <app-cart-item class="cartItem" *ngFor="let item of cartList" [cartElement]="item"></app-cart-item>
+            <app-cart-item class="cartItem" *ngFor="let item of cartList" [cartElement]="item" [index]="item.cartId"></app-cart-item>
         </div>
     </div>
 </div>

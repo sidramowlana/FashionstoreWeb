@@ -17,8 +17,9 @@ const getHttpOptions = (token: String) => {
 }
 @Injectable()
 export class CartService {
-    cartListUpdate= new Subject<Cart[]>();
-    
+    cartListUpdate = new Subject<Cart[]>();
+    cartLisAmounttUpdate = new Subject<any>();
+
     constructor(private http: HttpClient,
         private tokenStorageService: TokenStorageService) {
     }
@@ -33,6 +34,11 @@ export class CartService {
     }
     onDeleteCartIdService(cartId): Observable<any> {
         const localHttpOptions = getHttpOptions(this.tokenStorageService.getToken());
-        return this.http.delete(API + "delete/"+cartId, localHttpOptions);  
+        return this.http.delete(API + "delete/" + cartId, localHttpOptions);
+    }
+    onUpdateCartItem(cartId, quantity): Observable<any> {
+        const localHttpOptions = getHttpOptions(this.tokenStorageService.getToken());
+        return this.http.put<any>(API + "update-cart/" + cartId, {},
+        { params: { quantity }, ...localHttpOptions });
     }
 }

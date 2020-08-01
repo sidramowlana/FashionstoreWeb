@@ -13,17 +13,14 @@ export class CartItemListComponent implements OnInit {
   constructor(private cartService: CartService) { }
 
   ngOnInit() {
-    this.cartService.onGetAllCartItemByUserIdService().subscribe(data => {
-      this.cartList = data;
-      this.count = this.cartList.length;
-      console.log("this is my cart total: " + this.onCalculateTotal());
-      this.total = this.onCalculateTotal()
-      console.log(this.cartList);
-    });
+    this.getAllCartList();
     this.cartService.cartListUpdate.subscribe(updatedData => {
       this.cartList = updatedData;
       this.count = this.cartList.length;
       this.total = this.onCalculateTotal()
+    });
+    this.cartService.cartLisAmounttUpdate.subscribe(() => {
+      this.getAllCartList();
     });
   }
 
@@ -33,8 +30,13 @@ export class CartItemListComponent implements OnInit {
       total += cart.total;
     }
     return total
-
-
   }
+   getAllCartList(){
+    this.cartService.onGetAllCartItemByUserIdService().subscribe(data => {
+      this.cartList = data;
+      this.count = this.cartList.length;
+      this.total = this.onCalculateTotal()
+    });
+   }
 
 }

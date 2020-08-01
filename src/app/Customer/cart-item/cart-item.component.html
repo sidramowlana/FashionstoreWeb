@@ -3,7 +3,7 @@
         <div class="card-body">
             <div class="container" style="display: flex;
             justify-content: flex-end;">
-                <span style="position: absolute; cursor: pointer;" id="remove" type="button" (click)="onRemoveCartProduct(cartElement.cartId)"><i class="fa fa-times"></i></span>
+                <span style="position: absolute; cursor: pointer;" id="remove" type="button" (click)="onRemoveCartProduct(index)"><i class="fa fa-times"></i></span>
             </div>
             <img [attr.src]="cartElement?.product.scaledImage" class="imageView">
             <h6>{{cartElement.product.productName}}</h6>
@@ -13,7 +13,7 @@
             </div>
             <div class="qtyContainer">
                 <form class="col-7">
-                    <ng-number-picker (valueChange)="onSubmit()" [(value)]="cartElement.quantity" [min]="'1'" [max]="'cartElement.product.quantity'" [step]="'1'" [pickTimer]="'100'" [size]="'small'" #qty></ng-number-picker>
+                    <ng-number-picker (valueChange)="onSubmit(index)" [(value)]="cartElement.quantity" [min]="'1'" [max]="'cartElement.product.quantity'" [step]="'1'" [pickTimer]="'100'" [size]="'small'" #qty></ng-number-picker>
                 </form>
             </div>
         </div>
