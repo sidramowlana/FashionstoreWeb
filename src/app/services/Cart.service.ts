@@ -20,10 +20,12 @@ export class CartService {
         private tokenStorageService: TokenStorageService) {
     }
     onAddCartService(productId, quantity, size, total): Observable<any> {
-
         const localHttpOptions = getHttpOptions(this.tokenStorageService.getToken());
-
         return this.http.post<any>(API + "add-cart/" + productId,{},
          {params:{quantity, total, size}, ...localHttpOptions});    
+}
+onGetAllCartItemByUserIdService():Observable<any>{
+    const localHttpOptions = getHttpOptions(this.tokenStorageService.getToken());
+    return this.http.get(API + "cartAll",localHttpOptions);    
 }
 }

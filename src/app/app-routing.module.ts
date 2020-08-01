@@ -28,6 +28,7 @@ import { ProductRateReviewDetailComponent } from './Customer/product-item-view/p
 import { WishlistItemComponent } from './Customer/wishlist-item-list/wishlist-item/wishlist-item.component';
 import { WishlistItemListComponent } from './Customer/wishlist-item-list/wishlist-item-list.component';
 import { CartItemComponent } from './Customer/cart-item/cart-item.component';
+import { CartItemListComponent } from './Customer/cart-item-list/cart-item-list.component';
 
 const appRoutes: Routes =
     [
@@ -48,7 +49,7 @@ const appRoutes: Routes =
             ]
         },
         { path: 'my-wishlist', component: WishlistItemListComponent },
-        { path: 'my-cart', component: CartItemComponent },
+        { path: 'my-cart', component: CartItemListComponent },
         { path: 'register', component: RegisterComponent },
         { path: 'login', component: LoginComponent },
         {

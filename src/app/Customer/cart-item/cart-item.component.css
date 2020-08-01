@@ -1,30 +1,8 @@
-.container {
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-    border: 2px dashed rgba(114, 186, 94, 0.35);
-    height: 100%;
-    background: rgba(114, 186, 94, 0.05);
-}
-
-.pirate {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 4rem;
-}
-
-.doctor {
-    position: -webkit-sticky;
-    position: sticky;
-    bottom: 1rem;
-    align-self: flex-end;
-}
-
 .col-sm-4 {
     display: inline-block
 }
 
-.containerRemove {
+.container {
     flex-direction: row;
     flex-wrap: wrap;
 }
@@ -41,7 +19,7 @@
 
 .container_main {
     width: 250px;
-    height: 350px;
+    height: 380px;
 }
 
 .imageView {
@@ -54,4 +32,48 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+button {
+    border-radius: 18px;
+    background-color: rgb(122, 32, 47);
+    border: 1px solid rgb(122, 32, 47);
+    color: white;
+    margin: 0;
+    padding: 0 10px 0 10px;
+}
+
+button:hover {
+    border-radius: 18px;
+    background-color: white;
+    border: 1px solid rgb(122, 32, 47);
+    color: rgb(122, 32, 47);
+    margin: 0;
+    padding: 0 10px 0 10px;
+}
+
+h5 {
+    padding: 0;
+    margin: 0;
+}
+
+#remove:hover {
+    color: red;
+}
+
+.priceSizeData {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.qtyContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: -5%;
+    width: 100%;
+}
+
+h6 {
+    font-size: 0.9rem;
 }

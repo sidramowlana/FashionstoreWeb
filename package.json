@@ -25,6 +25,7 @@
     "@ng-select/ng-select": "^2.20.5",
     "bootstrap": "^4.5.0",
     "core-js": "^2.5.4",
+    "ng-number-picker": "^1.1.9",
     "ngx-bar-rating": "^1.1.0",
     "ngx-toastr": "^10.1.0",
     "rxjs": "~6.2.0",

@@ -10,6 +10,8 @@ import { AppComponent } from './app.component';
 import { BarRatingModule } from "ngx-bar-rating";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import {NumberPickerModule} from 'ng-number-picker';
+
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { ProductItemComponent } from './product-list/product-item/product-item.component';
@@ -64,6 +66,7 @@ import { AuthInterceptor } from './helper/authInterceptorProviders';
 import { WishlistItemComponent } from './Customer/wishlist-item-list/wishlist-item/wishlist-item.component';
 import { WishlistItemListComponent } from './Customer/wishlist-item-list/wishlist-item-list.component';
 import { CartItemComponent } from './Customer/cart-item/cart-item.component';
+import { CartItemListComponent } from './Customer/cart-item-list/cart-item-list.component';
 
 
 
@@ -114,7 +117,8 @@ import { CartItemComponent } from './Customer/cart-item/cart-item.component';
     AddProductInquiryComponent,
     WishlistItemComponent,
     WishlistItemListComponent,
-    CartItemComponent
+    CartItemComponent,
+    CartItemListComponent
   ],
   imports: [
     BrowserModule,
@@ -126,7 +130,8 @@ import { CartItemComponent } from './Customer/cart-item/cart-item.component';
     FormsModule,
     AppRoutingModule,
     BarRatingModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    NumberPickerModule
     ],
   providers: [AuthenticationService,
     TokenStorageService,

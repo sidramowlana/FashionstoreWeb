@@ -1,0 +1,29 @@
+<div class="cartContainerHolder">
+    <div class="item pirate">
+        <div class="container_main">
+            <div class=" card card-body">
+                <img src="https://thumbs.dreamstime.com/b/cute-cartoon-smartphone-shopping-great-technology-concept-design-68084513.jpg" class="imageView">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h6>Total</h6>
+                    </div>
+                    <div class="col-md-4">
+                        <h6>$00.00</h6>
+                    </div>
+                    <button (click)="onPayment()"><i class="fa fa-money" aria-hidden="true"></i>Payment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="containersm">
+        <div class="headerContainer">
+            <hr>
+            <p>My Cart</p>
+            <hr>
+        </div>
+        <div class="item_list_div">
+            <img *ngIf="count==0" src="https://ebookbazaar.com/images/empty_wishlist.png" class="img-fluid">
+            <app-cart-item class="cartItem" *ngFor="let item of cartList" [cartElement]="item"></app-cart-item>
+        </div>
+    </div>
+</div>

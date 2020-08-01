@@ -6,7 +6,6 @@
 
 hr {
     border: 2px solid rgb(122, 32, 47);
-    ;
     width: 40%;
     margin: 7px;
     padding: 0;
@@ -20,12 +19,6 @@ p {
 
 .wishlistItem {
     margin: 1%;
-}
-
-.row {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0;
 }
 
 .item_list_div {
