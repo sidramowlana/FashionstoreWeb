@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/Product.service';
 import { WishlistService } from 'src/app/services/Wishlist.service';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-product-items-list',
@@ -10,13 +11,14 @@ import { WishlistService } from 'src/app/services/Wishlist.service';
 export class ProductItemsListComponent implements OnInit {
 
   productList;
-  constructor(private productService: ProductService, private wishlistService: WishlistService) { }
+  routeName;
+  constructor(private productService: ProductService, private activatedRoute: ActivatedRoute, private wishlistService: WishlistService) { }
 
   ngOnInit() {
     this.productService.onGetAllProductService().subscribe(data => {
       this.productList = data;
       console.log(data);
-    });
+    });       
   }
 
 }

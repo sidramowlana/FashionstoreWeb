@@ -70,6 +70,10 @@ import { CartItemListComponent } from './Customer/cart-item-list/cart-item-list.
 import { UserService } from './services/User.service';
 import { PaymentFormComponent } from './payment-form/payment-form.component';
 import { AuthGuardService } from './services/authgaurd.service';
+import { CategoryProductComponent } from './Customer/category-product/category-product.component';
+import { CategoryMenComponent } from './category-men/category-men.component';
+import { CategoryKidsComponent } from './category-kids/category-kids.component';
+import { CategoryWomenComponent } from './category-women/category-women.component';
 
 
 
@@ -122,7 +126,11 @@ import { AuthGuardService } from './services/authgaurd.service';
     WishlistItemListComponent,
     CartItemComponent,
     CartItemListComponent,
-    PaymentFormComponent
+    PaymentFormComponent,
+    CategoryProductComponent,
+    CategoryMenComponent,
+    CategoryKidsComponent,
+    CategoryWomenComponent
   ],
   imports: [
     BrowserModule,

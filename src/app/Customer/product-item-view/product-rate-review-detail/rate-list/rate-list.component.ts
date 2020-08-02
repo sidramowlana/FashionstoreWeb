@@ -39,7 +39,7 @@ scaledImage:String;
   }
 
   onViewDetails(index){
-    this.router.navigate(['home/products/details/'+index]);
+    this.router.navigate(['products/details/'+index]);
   }
 
 }

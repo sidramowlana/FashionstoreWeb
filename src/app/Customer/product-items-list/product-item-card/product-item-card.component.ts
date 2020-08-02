@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Product } from 'src/app/models/Product.model';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { WishlistService } from 'src/app/services/Wishlist.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { RateReviewServie } from 'src/app/services/RateReview.service';
 import { ToastrService } from 'ngx-toastr';
 
@@ -82,7 +82,13 @@ export class ProductItemCardComponent implements OnInit {
 
   onDetails(index) {
     if (this.authService.loggedIn()) {
-      this.router.navigate(['products/details/' + index], { relativeTo: this.activatedRoute });
+
+      this.activatedRoute.params.subscribe((params:Params)=>{
+        console.log(params)
+      });
+      // if()
+      this.router.navigate(['products/details/' + index])
+      // , { relativeTo: this.activatedRoute });
     } else {
       this.toastr.warning("Please login to view further details")
     }

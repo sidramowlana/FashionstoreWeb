@@ -17,7 +17,7 @@ const getHttpOptions = (token: String) => {
 }
 
 @Injectable()
-export class ProductService{
+export class ProductService {
 
     productUpdateChange = new Subject<Product>();
     constructor(private http: HttpClient,
@@ -26,36 +26,36 @@ export class ProductService{
     onGetAllProductService(): Observable<any> {
         return this.http.get(API + "productAll");
     }
-    
-    onGetProductByProductIdService(productId):Observable<any>
-    {
+    onGetProductsByTagName(tagName): Observable<any> {
+        return this.http.get(API + "category/product-all/" + tagName)
+    }
+    onGetProductByProductIdService(productId): Observable<any> {
         const localHttpOptions = getHttpOptions(this.tokenStorageService.getToken());
-        return this.http.get(API+"product/"+productId,localHttpOptions);
+        return this.http.get(API + "product/" + productId, localHttpOptions);
     }
 
-    onAddProduct(productForm):Observable<any>
-    {
+    onAddProduct(productForm): Observable<any> {
         const localHttpOptions = getHttpOptions(this.tokenStorageService.getToken());
-        return this.http.post(API+"admin/new-product",
-        {
+        return this.http.post(API + "admin/new-product",
+            {
 
-            scaledImage: productForm.value.scaledImage,
-            productName: productForm.value.productName,
-            price: productForm.value.price,
-            quantity: productForm.value.quantity,
-            catergoryArray: productForm.value.catergoryArray,        
-            shortDescription: productForm.value.shortDescription           
-        },localHttpOptions);
+                scaledImage: productForm.value.scaledImage,
+                productName: productForm.value.productName,
+                price: productForm.value.price,
+                quantity: productForm.value.quantity,
+                catergoryArray: productForm.value.catergoryArray,
+                shortDescription: productForm.value.shortDescription
+            }, localHttpOptions);
 
     }
-    onUpdateProduct(id,formData): Observable<any> {
+    onUpdateProduct(id, formData): Observable<any> {
         const localHttpOptions = getHttpOptions(this.tokenStorageService.getToken());
         return this.http.put(API + 'updateProduct/' + id, {
             scaledImage: formData.value.scaledImage,
-                productName: formData.value.productName,
-                price: formData.value.price,
-                quantity: formData.value.quantity,
-                shortDescription: formData.value.shortDescription           
+            productName: formData.value.productName,
+            price: formData.value.price,
+            quantity: formData.value.quantity,
+            shortDescription: formData.value.shortDescription
         },
             localHttpOptions);
     }

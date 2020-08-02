@@ -3,9 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
-import { ProductListComponent } from './product-list/product-list.component';
 import { HomeComponent } from './home/home.component';
-import { ProductDetailComponent } from './product-list/product-detail/product-detail.component';
 import { AdminProductComponent } from './Admin/admin-product/admin-product.component';
 import { AddProductComponent } from './Admin/admin-product/add-product/add-product.component';
 import { AdminCategoryComponent } from './Admin/admin-category/admin-category.component';
@@ -15,22 +13,20 @@ import { AdminInquiryComponent } from './Admin/overall-inquiries/admin-inquiry/a
 import { AdminInquiryItemReplyComponent } from './Admin/overall-inquiries/admin-inquiry/admin-inquiry-item-reply/admin-inquiry-item-reply.component';
 import { AdminInquiryReplyComponent } from './Admin/overall-inquiries/admin-inquiry-reply/admin-inquiry-reply.component';
 import { AdminOrdersComponent } from './Admin/admin-orders/admin-orders.component';
-import { PendingListComponent } from './Admin/admin-orders/admin-pending-orders/pending-list/pending-list.component';
 import { AdminPendingOrdersComponent } from './Admin/admin-orders/admin-pending-orders/admin-pending-orders.component';
-import { CartOrdersItemComponent } from './Admin/admin-orders/admin-pending-orders/cart-orders-list/cart-orders-item/cart-orders-item.component';
 import { CartOrdersSelectedViewComponent } from './Admin/admin-orders/admin-pending-orders/cart-orders-selected-view/cart-orders-selected-view.component';
 import { AdminCancelCompleteOrderTableComponent } from './Admin/admin-orders/admin-cancel-complete-order-table/admin-cancel-complete-order-table.component';
 import { ProductItemsListComponent } from './Customer/product-items-list/product-items-list.component';
-import { ProductItemCardComponent } from './Customer/product-items-list/product-item-card/product-item-card.component';
 import { ProductItemViewComponent } from './Customer/product-item-view/product-item-view.component';
 import { ProductItemDetailComponent } from './Customer/product-item-view/product-item-detail/product-item-detail.component';
 import { ProductRateReviewDetailComponent } from './Customer/product-item-view/product-rate-review-detail/product-rate-review-detail.component';
-import { WishlistItemComponent } from './Customer/wishlist-item-list/wishlist-item/wishlist-item.component';
 import { WishlistItemListComponent } from './Customer/wishlist-item-list/wishlist-item-list.component';
-import { CartItemComponent } from './Customer/cart-item-list/cart-item/cart-item.component';
 import { CartItemListComponent } from './Customer/cart-item-list/cart-item-list.component';
 import { PaymentFormComponent } from './payment-form/payment-form.component';
 import { AuthGuardService } from './services/authgaurd.service';
+import { CategoryWomenComponent } from './category-women/category-women.component';
+import { CategoryMenComponent } from './category-men/category-men.component';
+import { CategoryKidsComponent } from './category-kids/category-kids.component';
 
 const appRoutes: Routes =
     [
@@ -39,17 +35,17 @@ const appRoutes: Routes =
         {
             path: 'home', component: HomeComponent,
             children: [
-                { path: '', component: ProductItemsListComponent },
-                {
-                    path: 'products', component: ProductItemViewComponent, children: [
-                        { path: 'details/:id', component: ProductItemDetailComponent },
-                        { path: 'ratesReviews/:id', component: ProductRateReviewDetailComponent }
-                    ]
-                },
-
-
+                { path: '', component: ProductItemsListComponent },               
             ]
         },
+        {
+            path: 'products', component: ProductItemViewComponent, children: [
+                { path: 'details/:id', component: ProductItemDetailComponent },
+                { path: 'ratesReviews/:id', component: ProductRateReviewDetailComponent }                    ]
+        },
+        { path: 'category/women', component: CategoryWomenComponent },
+        { path: 'category/men', component: CategoryMenComponent },
+        { path: 'category/kids', component: CategoryKidsComponent },
         { path: 'my-wishlist', component: WishlistItemListComponent },
         { path: 'my-cart', component: CartItemListComponent },
         { path: 'payment', component: PaymentFormComponent },

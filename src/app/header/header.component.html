@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light">
+<nav class="navbar navbar-expand-lg navbar-dark" id="header">
     <img src="https://cdn.dribbble.com/users/195708/screenshots/1943301/m1111.jpg">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -10,22 +10,22 @@
                 <a class="nav-link" routerLink="/home">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" href="#">Woman</a>
+                <a class="nav-link" routerLink="/category/women">Woman</a>
             </li>
             <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" href="#">Men</a>
+                <a class="nav-link" routerLink="/category/men">Men</a>
             </li>
             <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" href="#">Kids</a>
+                <a class="nav-link" routerLink="/category/kids">Kids</a>
             </li>
-            <li class="nav-item dropdown" *ngIf="authenticationService.isAuthenticated()">
+            <li class="nav-item dropdown" *ngIf="authenticationService.isAuthenticated()" routerLinkActive="active" [routerLinkActiveOptions]={exact:true}>
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Product & Categories</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" routerLink="/products">Product</a>
-                    <a class="dropdown-item" routerLink="/category">Categories</a>
+                    <a class="dropdown-item" routerLink="/products" routerLinkActive="active">Product</a>
+                    <a class="dropdown-item" routerLink="/category" routerLinkActive="active">Categories</a>
                 </div>
             </li>
-            <li class="nav-item dropdown" *ngIf="authenticationService.isAuthenticated()">
+            <li class="nav-item dropdown" *ngIf="authenticationService.isAuthenticated()" routerLinkActive="active" [routerLinkActiveOptions]={exact:true}>
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Inquiries & Replies</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" routerLink="inquiries/inquiry">Inquiries</a>
