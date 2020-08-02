@@ -30,11 +30,12 @@ import { WishlistItemListComponent } from './Customer/wishlist-item-list/wishlis
 import { CartItemComponent } from './Customer/cart-item-list/cart-item/cart-item.component';
 import { CartItemListComponent } from './Customer/cart-item-list/cart-item-list.component';
 import { PaymentFormComponent } from './payment-form/payment-form.component';
+import { AuthGuardService } from './services/authgaurd.service';
 
 const appRoutes: Routes =
     [
         { path: '', redirectTo: '/home', pathMatch: 'full' },
-        { path: 'null', redirectTo: '/home', pathMatch: 'full' },
+        // { path: 'null', redirectTo: '/home', pathMatch: 'full' },
         {
             path: 'home', component: HomeComponent,
             children: [
@@ -55,19 +56,19 @@ const appRoutes: Routes =
         { path: 'register', component: RegisterComponent },
         { path: 'login', component: LoginComponent },
         {
-            path: 'products', component: AdminProductComponent, children:
+            path: 'products', component: AdminProductComponent, canActivate: [AuthGuardService],children:
                 [
                     { path: 'new', component: AddProductComponent },
                     { path: 'productdetail/:id', component: EditViewProductComponent }
                 ]
         },
         {
-            path: 'category', component: AdminCategoryComponent, children: [
+            path: 'category', component: AdminCategoryComponent, canActivate:[AuthGuardService],children: [
                 { path: 'category', component: AddProductComponent }
             ]
         },
         {
-            path: 'inquiries', component: OverallInquiriesComponent, children:
+            path: 'inquiries', component: OverallInquiriesComponent,canActivate:[AuthGuardService], children:
                 [
                     { path: '', redirectTo: '/inquiries/inquiry', pathMatch: 'full' },
                     { path: 'replies', redirectTo: '/inquiries/replies', pathMatch: 'full' },
@@ -80,7 +81,7 @@ const appRoutes: Routes =
                 ]
         },
         {
-            path: 'orders', component: AdminOrdersComponent, children: [
+            path: 'orders', component: AdminOrdersComponent,canActivate:[AuthGuardService], children: [
                 { path: '', redirectTo: '/orders/pending', pathMatch: 'full' },
                 {
                     path: 'pending', component: AdminPendingOrdersComponent, children: [

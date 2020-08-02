@@ -69,6 +69,7 @@ import { CartItemComponent } from './Customer/cart-item-list/cart-item/cart-item
 import { CartItemListComponent } from './Customer/cart-item-list/cart-item-list.component';
 import { UserService } from './services/User.service';
 import { PaymentFormComponent } from './payment-form/payment-form.component';
+import { AuthGuardService } from './services/authgaurd.service';
 
 
 
@@ -145,6 +146,7 @@ import { PaymentFormComponent } from './payment-form/payment-form.component';
     RateReviewServie,OrdersService,DatePipe,
     ProductInquiryService,
     UserService,
+    AuthGuardService,
     {
       provide:HTTP_INTERCEPTORS, 
       useClass:AuthInterceptor, 

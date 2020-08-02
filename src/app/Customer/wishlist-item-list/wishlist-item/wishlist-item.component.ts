@@ -22,6 +22,8 @@ export class WishlistItemComponent implements OnInit {
     this.wishListService.onAddRemoveWishlistService(productId).subscribe(data=>{
       console.log(data);
       this.wishListService.wishListListChange.next();
+      this.wishListService.wishListListCountChange.next();
+
       this.toastr.success(data.message);
     },
     err=>

@@ -24,65 +24,67 @@ export class ProductItemCardComponent implements OnInit {
   totalRate;
   average;
   rateReviewList;
-  
+
   constructor(private authService: AuthenticationService,
-    private toastr:ToastrService,
+    private toastr: ToastrService,
     private wishlistService: WishlistService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private rateReviewService:RateReviewServie) { }
+    private rateReviewService: RateReviewServie) { }
 
   ngOnInit() {
-    this.wishlistService.getAWishlistProductService(this.productElement.productId).subscribe((data) => {
-      this.wishlistProduct = data;
-      if (data != null) {
-        if (this.wishlistProduct.product.productId == this.productElement.productId) {
-          this.isFavourite = true
+    if (this.authService.loggedIn()) {
+      this.wishlistService.getAWishlistProductService(this.productElement.productId).subscribe((data) => {
+        this.wishlistProduct = data;
+        if (data != null) {
+          if (this.wishlistProduct.product.productId == this.productElement.productId) {
+            this.isFavourite = true
+          }
+          else {
+            this.isFavourite = false;
+          }
         }
-        else {
-          this.isFavourite = false;
-        }
-       
-      }
-    });
+      });
+    }
     this.rateReviewService.onGetRateReviewByProductId(this.index).subscribe(data => {
-      if (data.length != 0)
-      {
-        console.log(data);
+      if (data.length != 0) {
         this.rateReviewList = data;
         this.average = this.rateReviewService.onCalculateAverage(this.rateReviewList);
       }
     });
   }
- 
 
-  onAddRemoveWishList(productId) {
+
+  onAddRemoveWishList(productId) {   
+     if (this.authService.loggedIn()) {
     this.wishlistService.onAddRemoveWishlistService(productId).subscribe((data) => {
       if (this.isFavourite == true) {
         this.isFavourite = false;
         this.wishlistService.wishListFavouriteChange.next(this.isFavourite);
-        this.wishlistService.wishListFavouriteChange.next(this.isFavourite);
+        this.wishlistService.wishListListCountChange.next();
         this.toastr.success(data.message);
-
       }
       else {
         this.isFavourite = true;
         this.wishlistService.wishListFavouriteChange.next(this.isFavourite);
+        this.wishlistService.wishListListCountChange.next();
         this.toastr.success("Added to your wishlist");
-
       }
     },
       err => {
-        this.toastr.error("Somethingwent wong with the system","Could not peform the function");
-
-        console.log("error is: " + err.error.error.message);
-        console.log("error is: " + err.error.error.stack);
+        this.toastr.error("Somethingwent wong with the system", "Could not peform the function");
       }
     );
+     }else{
+      this.toastr.warning("Please login to add product to your wishlist")
+     }
   }
 
   onDetails(index) {
-    // this.router.navigate([index+'/details/'+index],{relativeTo:this.activatedRoute});    
-    this.router.navigate(['products/details/'+index],{relativeTo:this.activatedRoute});
+    if (this.authService.loggedIn()) {
+      this.router.navigate(['products/details/' + index], { relativeTo: this.activatedRoute });
+    } else {
+      this.toastr.warning("Please login to view further details")
+    }
   }
 }

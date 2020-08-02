@@ -32,6 +32,8 @@ export class CartItemComponent implements OnInit {
       console.log(data);
       this.cartService.onGetAllCartItemByUserIdService().subscribe(data => {
         this.cartService.cartListUpdate.next(data);
+        this.cartService.cartListCountChange.next();
+
       });
     });
   }

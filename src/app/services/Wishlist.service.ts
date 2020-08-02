@@ -22,6 +22,8 @@ const getHttpOptions = (token: String) => {
 export class WishlistService {
     wishListFavouriteChange = new Subject<boolean>();
     wishListListChange = new Subject<number>();
+    wishListListCountChange = new Subject<number>();
+    
 
     constructor(private http: HttpClient, private tokenStorageService: TokenStorageService) {
 

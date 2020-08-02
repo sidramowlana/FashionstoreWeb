@@ -19,6 +19,7 @@ const getHttpOptions = (token: String) => {
 export class CartService {
     cartListUpdate = new Subject<Cart[]>();
     cartLisAmounttUpdate = new Subject<any>();
+    cartListCountChange = new Subject<number>();
 
     constructor(private http: HttpClient,
         private tokenStorageService: TokenStorageService) {
@@ -39,6 +40,6 @@ export class CartService {
     onUpdateCartItem(cartId, quantity): Observable<any> {
         const localHttpOptions = getHttpOptions(this.tokenStorageService.getToken());
         return this.http.put<any>(API + "update-cart/" + cartId, {},
-        { params: { quantity }, ...localHttpOptions });
+            { params: { quantity }, ...localHttpOptions });
     }
 }

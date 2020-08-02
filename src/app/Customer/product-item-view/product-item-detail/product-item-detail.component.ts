@@ -96,6 +96,7 @@ export class ProductItemDetailComponent implements OnInit {
       console.log(this.id+" = "+this.cartQuantity+" = "+cartSize+ " = "+this.totalAmount)
       this.cartService.onAddCartService(this.id, Number(this.cartQuantity), cartSize, this.totalAmount).subscribe(data => {
         console.log(data);
+        this.cartService.cartListCountChange.next();
         this.toastr.success("Added to your cart");
       });
     }
@@ -111,6 +112,7 @@ export class ProductItemDetailComponent implements OnInit {
         this.isFavourite = false;
         console.log("item: " + this.isFavourite)
         this.wishlistService.wishListFavouriteChange.next(this.isFavourite);
+        this.wishlistService.wishListListCountChange.next();
         this.toastr.success(data.message);
 
       }
@@ -118,6 +120,7 @@ export class ProductItemDetailComponent implements OnInit {
         this.isFavourite = true;
         console.log("item: " + this.isFavourite)
         this.wishlistService.wishListFavouriteChange.next(this.isFavourite);
+        this.wishlistService.wishListListCountChange.next();
         this.toastr.success("Added to your Wishlist");
 
       }

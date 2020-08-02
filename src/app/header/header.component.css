@@ -59,3 +59,8 @@ img {
 .dropdown-item:hover {
     color: rgb(122, 32, 47);
 }
+
+.badge {
+    background-color: transparent;
+    color: wheat;
+}
