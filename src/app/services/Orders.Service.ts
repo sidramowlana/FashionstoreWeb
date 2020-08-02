@@ -17,12 +17,32 @@ const getHttpOptions = (token: String) => {
 
 @Injectable()
 export class OrdersService {
-updatePendingOrderList= new Subject<Orders[]>();
+    updatePendingOrderList = new Subject<Orders[]>();
 
     constructor(private http: HttpClient,
         private tokenStorageService: TokenStorageService) {
     }
+    onAddOrdersService(formData, date, status) {
+        const localHttpOptions = getHttpOptions(this.tokenStorageService.getToken());
+        return this.http.post(API + 'orders/add-order/',
+            {
+                postalCode: formData.value.postalCode,
+                city: formData.value.city,
+                address: formData.value.address,
+                total: formData.value.total,
+                date: date,
+                status: status
+            }, localHttpOptions);
+    }
+    onAddCartOrdersService(cartOrders):Observable<any>{
+        const localHttpOptions = getHttpOptions(this.tokenStorageService.getToken());
+        return this.http.post(API + 'cart/add-order/',
+            {
+                orders: cartOrders.orders,
+                cart: cartOrders.cart
 
+            }, localHttpOptions);
+    }
     onGetAllPendingOrdersByStatus(status): Observable<any> {
         const localHttpOptions = getHttpOptions(this.tokenStorageService.getToken());
         return this.http.get(API + 'all/' + status, localHttpOptions);
@@ -37,8 +57,8 @@ updatePendingOrderList= new Subject<Orders[]>();
         const localHttpOptions = getHttpOptions(this.tokenStorageService.getToken());
         return this.http.get(API + 'order/' + id, localHttpOptions)
     }
-    onUpdateOrderStatusByOrderId(status,id):Observable<any>
-    {  const localHttpOptions = getHttpOptions(this.tokenStorageService.getToken());
-        return this.http.put(API + 'order-status/' + id+"/"+status,localHttpOptions)
+    onUpdateOrderStatusByOrderId(status, id): Observable<any> {
+        const localHttpOptions = getHttpOptions(this.tokenStorageService.getToken());
+        return this.http.put(API + 'order-status/' + id + "/" + status, localHttpOptions)
     }
 }   

@@ -34,8 +34,8 @@
 
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="onClose()">Close</button>
-                        <button type="submit" class="btn btn-primary" [disabled]="!paymentForm.valid">Make Payments</button>
+                        <button type="button" class="btn btn-primary closeBtnId" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary  payBtnId" [disabled]="!paymentForm.valid">Make Payments</button>
                     </div>
                 </form>
             </div>

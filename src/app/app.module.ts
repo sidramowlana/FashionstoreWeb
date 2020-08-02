@@ -67,8 +67,8 @@ import { WishlistItemComponent } from './Customer/wishlist-item-list/wishlist-it
 import { WishlistItemListComponent } from './Customer/wishlist-item-list/wishlist-item-list.component';
 import { CartItemComponent } from './Customer/cart-item-list/cart-item/cart-item.component';
 import { CartItemListComponent } from './Customer/cart-item-list/cart-item-list.component';
-import { PaymentFormComponent } from './payment-form/payment-form.component';
 import { UserService } from './services/User.service';
+import { PaymentFormComponent } from './payment-form/payment-form.component';
 
 
 

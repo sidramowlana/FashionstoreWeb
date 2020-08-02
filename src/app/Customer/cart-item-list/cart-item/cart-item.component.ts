@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { worker } from 'cluster';
 import { CartService } from 'src/app/services/Cart.service';
 
 @Component({
@@ -13,7 +12,6 @@ export class CartItemComponent implements OnInit {
   @Input() cartElement;
   @Input() index;
   @ViewChild('qty') qty: HTMLInputElement;
-  // @ViewChild('selectedSize') selectedSize: ElementRef;
 
   constructor(private cartService: CartService) { }
   ngOnInit() {

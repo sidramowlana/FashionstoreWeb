@@ -5,4 +5,6 @@ export class CartOrders{
     private cardOrderId:number;
     private cart:Cart ;
     private orders:Orders ;
+
+    constructor(orders:Orders,cart:Cart){this.orders = orders,this.cart = cart}
 }

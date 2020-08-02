@@ -1,0 +1,19 @@
+.closeBtnId,
+.payBtnId:hover {
+    background-color: white;
+    border: 1px solid rgb(122, 32, 47);
+    color: rgb(122, 32, 47);
+    border-radius: 18px;
+    padding: 1% 2% 1% 2%;
+    cursor: pointer;
+}
+
+.closeBtnId:hover,
+.payBtnId {
+    background-color: rgb(122, 32, 47);
+    border: 1px solid white;
+    color: white;
+    border-radius: 18px;
+    cursor: pointer;
+    padding: 1% 2% 1% 2%;
+}

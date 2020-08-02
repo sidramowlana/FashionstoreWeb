@@ -38,7 +38,6 @@ export class AddProductInquiryComponent implements OnInit {
   }
   onAddInquiry()
   {
-    console.log(this.currentDateFormatted)
     this.productInquiryService.onAddProductInquiryByProductIdService(this.id,this.inquiryForm,this.currentDateFormatted).subscribe(data=>{
       console.log(data);
       this.inquiryForm.reset();
