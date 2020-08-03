@@ -42,9 +42,9 @@
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown dropleft">
-                <button *ngIf="!authenticationService.isAuthenticated()" class="btn btn-primary" id="headerloginsign" style="width: 100%;" (click)="onLoginSignup()">Login / SignUp</button>
+                <button *ngIf="!authenticationService.loggedIn()" class="btn btn-primary" id="headerloginsign" style="width: 100%;" (click)="onLoginSignup()">Login / SignUp</button>
             </li>
-            <li class="nav-item dropdown dropleft" *ngIf="authenticationService.isAuthenticated()">
+            <li class="nav-item dropdown dropleft" *ngIf="authenticationService.loggedIn()">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-user-o" aria-hidden="true"></i></a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -55,7 +55,16 @@
                         <button class="btn btn-primary" id="logoutId" (click)="onLogout()">Logout</button>
                     </ng-template>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" routerLink="orders/pending"><i class="fa fa-check-circle" aria-hidden="true"></i> &nbsp; Orders</a>
+                    <a class="dropdown-header dropdown-item dropdown-toggle" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-th-list" aria-hidden="true"></i> &nbsp; Orders
+
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                        <a class="dropdown-item" routerLink="pending"><i class="fa fa-clock-o" aria-hidden="true"></i> &nbsp; Pending</a>
+                        <a class="dropdown-item" routerLink="completed"><i class="fa fa-check-circle" aria-hidden="true"></i> &nbsp; Completed</a>
+                        <a class="dropdown-item" routerLink="cancelled"><i class="fa fa-ban" aria-hidden="true"></i> &nbsp; Cancelled</a>
+
+                    </div>
                     <a class="dropdown-item" routerLink="inquiries/inquiry"><i class="fa fa-pencil" aria-hidden="true"></i> &nbsp; Inquiry</a>
                 </div>
             </li>

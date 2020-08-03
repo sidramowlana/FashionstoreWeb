@@ -47,4 +47,8 @@ export class ProductInquiryService {
             { answers: formData.value.answers },
             localHttpOptions);
     }
+    onGetAllProductInquiryByProductId(productId):Observable<any>{
+        const localHttpOptions = getHttpOptions(this.tokenStorageService.getToken());
+        return this.http.get(API + 'product-all/' + productId, localHttpOptions);
+    }
 }

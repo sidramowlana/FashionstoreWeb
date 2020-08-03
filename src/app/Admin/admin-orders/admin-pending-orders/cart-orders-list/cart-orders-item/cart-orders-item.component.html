@@ -1,13 +1,15 @@
-<div style="cursor: pointer" class=" card clearfix">
-    <div class="card-body" style="display: flex;">
-        <div class="col-md-5">
-            <img [attr.src]="cartOrderElement?.cart.product.scaledImage" class="img-fluid">
+<div style="cursor: pointer; width: 470px;" class="card clearfix">
+    <div class="card-body">
+        <div class="containerImage">
+            <img [attr.src]="cartOrderElement?.cart.product.scaledImage" class="imgContainer">
         </div>
-        <div class="col-md-7">
+        <div class="container2">
             <h5 class="card-title">Cart Orders Id {{cartOrderElement.cardOrderId}}</h5>
-            <p class="card-text">Producct: {{cartOrderElement.cart.product.productName}}</p>
-            <p class="card-text">Quantity: {{cartOrderElement.cart.quantity}}</p>
-            <p class="card-text">Size: {{cartOrderElement.cart.size}}</p>
+            <p class="card-text">Product: {{cartOrderElement.cart.product.productName}}</p>
+            <div class="qtypricesize">
+                <p class="card-text">{{cartOrderElement.cart.size}} x {{cartOrderElement.cart.quantity}} </p>
+                <p class="card-text">{{cartOrderElement.cart.total}} </p>
+            </div>
         </div>
     </div>
 </div>

@@ -42,8 +42,7 @@ export class ProductItemDetailComponent implements OnInit {
     private cartService: CartService, private productService: ProductService,
     private rateReviewService: RateReviewServie,
     private activatedRoute: ActivatedRoute,
-    private router:Router,
-    private location: Location) {
+    private router:Router) {
   }
 
   ngOnInit() {

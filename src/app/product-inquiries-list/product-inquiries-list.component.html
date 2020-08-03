@@ -1,0 +1,7 @@
+<div class="headerContainer">
+    <hr>
+    <p>Product Inquiries</p>
+    <hr>
+</div>
+<app-product-inquiries-item *ngFor="let inquiry of inquiriesList" [inquiryElement]="inquiry"></app-product-inquiries-item>
+<img style="margin-left: 40%;" *ngIf="count==0" src="https://img.icons8.com/bubbles/2x/question-mark.png" class="img-fluid">

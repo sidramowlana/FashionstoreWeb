@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ProductInquiryService } from 'src/app/services/ProductInquiry.service';
 
@@ -17,7 +17,7 @@ export class AddProductInquiryComponent implements OnInit {
   id;
   
   constructor(private toastr: ToastrService,
-    private activatedRoute:ActivatedRoute,
+    private activatedRoute:ActivatedRoute,private router:Router,
     private productInquiryService:ProductInquiryService,private datepipe: DatePipe) { }
  
   ngOnInit() {
@@ -42,6 +42,11 @@ export class AddProductInquiryComponent implements OnInit {
       console.log(data);
       this.inquiryForm.reset();
       this.toastr.success("We will reply to you soon","Your inquiry has been made successfully");
+      this.productInquiryService.onGetAllProductInquiryByProductId(this.id).subscribe(data=>
+        {
+          this.productInquiryService.productInquiryListUpdate.next(data);
+        })
+      // this.router.navigate(['product/details'+this.id]);
 
     },
     err=>{

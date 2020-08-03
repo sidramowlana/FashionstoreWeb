@@ -1,0 +1,19 @@
+.headerContainer {
+    display: flex;
+    justify-content: space-between;
+    margin: 4%;
+}
+
+hr {
+    border: 2px solid rgb(122, 32, 47);
+    width: 40%;
+    margin: 7px;
+    padding: 0;
+}
+
+p {
+    margin: -17px;
+    color: gray;
+    font-size: 2em;
+    text-align: center;
+}

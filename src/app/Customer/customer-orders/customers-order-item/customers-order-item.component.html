@@ -1,0 +1,20 @@
+<div class="container_main">
+    <div class="card card-flip h-100">
+        <div class="card-body">
+            <div class="container">
+                <h6>Order Id {{custOrderElement.ordersId}}</h6>
+                <span style="cursor: pointer;" id="info" type="button" (click)="onOrderDetail(custOrderElement.ordersId)"><i class="fa fa-info"></i></span>
+            </div>
+            <div class="dateContainer">
+                <p>Date</p>
+                <p>{{custOrderElement.date}}</p>
+            </div>
+            <div class="priceContainer">
+                <p>Total Price: </p>
+                <p>{{custOrderElement.total}}</p>
+            </div>
+            <p style="margin: 3%;">Address: {{custOrderElement.address}}, {{custOrderElement.city}}, {{custOrderElement.postalCode}} </p>
+
+        </div>
+    </div>
+</div>

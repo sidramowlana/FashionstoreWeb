@@ -1,0 +1,36 @@
+<div class="container-sm card">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="usernameContainer">
+                <div class="col-3">
+                    <p>User name: </p>
+                </div>
+                <div class="col-9">
+                    <p>{{inquiryElement.user.username}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="dateContainer">
+                <div class="col-3">
+                    <p>Date</p>
+
+                </div>
+                <div class="col-9">
+                    <p>{{inquiryElement.date}}</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <p id="question">Question: &nbsp;&nbsp; </p>
+        <p id="question">{{inquiryElement.question}}</p>
+    </div>
+    <div class="row">
+        <p>Answer: &nbsp;&nbsp;</p>
+        <p style="color: gray" *ngIf="inquiryElement.answers ===null">We will reply to you soon</p>
+        <p *ngIf="inquiryElement.answers !==''">{{inquiryElement.answers}}</p>
+    </div>
+
+</div>

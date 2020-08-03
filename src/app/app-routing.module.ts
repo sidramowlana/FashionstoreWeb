@@ -27,6 +27,12 @@ import { AuthGuardService } from './services/authgaurd.service';
 import { CategoryWomenComponent } from './category-women/category-women.component';
 import { CategoryMenComponent } from './category-men/category-men.component';
 import { CategoryKidsComponent } from './category-kids/category-kids.component';
+import { CustomersPendingOrderItemListComponent } from './Customer/customer-orders/customers-pending-order-item-list/customers-pending-order-item-list.component';
+import { CustomersCancelOrderItemListComponent } from './Customer/customer-orders/customers-cancel-order-item-list/customers-cancel-order-item-list.component';
+import { CustomersCompletedOrderItemListComponent } from './Customer/customer-orders/customers-completed-order-item-list/customers-completed-order-item-list.component';
+import { CustomerOrdersComponent } from './Customer/customer-orders/customer-orders.component';
+import { identifierModuleUrl } from '@angular/compiler';
+import { CustomerOrdersDetailItemComponent } from './Customer/customer-orders-detail-item/customer-orders-detail-item.component';
 
 const appRoutes: Routes =
     [
@@ -35,36 +41,47 @@ const appRoutes: Routes =
         {
             path: 'home', component: HomeComponent,
             children: [
-                { path: '', component: ProductItemsListComponent },               
+                { path: '', component: ProductItemsListComponent },
             ]
         },
         {
             path: 'products', component: ProductItemViewComponent, children: [
                 { path: 'details/:id', component: ProductItemDetailComponent },
-                { path: 'ratesReviews/:id', component: ProductRateReviewDetailComponent }                    ]
+                { path: 'ratesReviews/:id', component: ProductRateReviewDetailComponent }]
         },
         { path: 'category/women', component: CategoryWomenComponent },
         { path: 'category/men', component: CategoryMenComponent },
-        { path: 'category/kids', component: CategoryKidsComponent },
+        { path: 'category/kids', component: CategoryKidsComponent }, 
+        {
+            path: '', component: CustomerOrdersComponent, children: [
+                { path: 'pending', component: CustomersPendingOrderItemListComponent,children:[
+                    {path:'details/:id',component:CustomerOrdersDetailItemComponent}
+                ] },
+                { path: 'completed', component: CustomersCompletedOrderItemListComponent,children:[
+                    {path:'details/:id',component:CustomerOrdersDetailItemComponent}] },
+                { path: 'cancelled', component: CustomersCancelOrderItemListComponent,children:[
+                    {path:'details/:id',component:CustomerOrdersDetailItemComponent}] },
+            ]
+        },
         { path: 'my-wishlist', component: WishlistItemListComponent },
         { path: 'my-cart', component: CartItemListComponent },
         { path: 'payment', component: PaymentFormComponent },
         { path: 'register', component: RegisterComponent },
         { path: 'login', component: LoginComponent },
         {
-            path: 'products', component: AdminProductComponent, canActivate: [AuthGuardService],children:
+            path: 'products', component: AdminProductComponent, canActivate: [AuthGuardService], children:
                 [
                     { path: 'new', component: AddProductComponent },
                     { path: 'productdetail/:id', component: EditViewProductComponent }
                 ]
         },
         {
-            path: 'category', component: AdminCategoryComponent, canActivate:[AuthGuardService],children: [
+            path: 'category', component: AdminCategoryComponent, canActivate: [AuthGuardService], children: [
                 { path: 'category', component: AddProductComponent }
             ]
         },
         {
-            path: 'inquiries', component: OverallInquiriesComponent,canActivate:[AuthGuardService], children:
+            path: 'inquiries', component: OverallInquiriesComponent, canActivate: [AuthGuardService], children:
                 [
                     { path: '', redirectTo: '/inquiries/inquiry', pathMatch: 'full' },
                     { path: 'replies', redirectTo: '/inquiries/replies', pathMatch: 'full' },
@@ -77,7 +94,7 @@ const appRoutes: Routes =
                 ]
         },
         {
-            path: 'orders', component: AdminOrdersComponent,canActivate:[AuthGuardService], children: [
+            path: 'orders', component: AdminOrdersComponent, canActivate: [AuthGuardService], children: [
                 { path: '', redirectTo: '/orders/pending', pathMatch: 'full' },
                 {
                     path: 'pending', component: AdminPendingOrdersComponent, children: [

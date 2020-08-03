@@ -1,22 +1,19 @@
 import { NgSelectModule } from '@ng-select/ng-select';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {HashLocationStrategy, LocationStrategy, DatePipe} from '@angular/common';
+import { HashLocationStrategy, LocationStrategy, DatePipe } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { BarRatingModule } from "ngx-bar-rating";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-import {NumberPickerModule} from 'ng-number-picker';
+import { NumberPickerModule } from 'ng-number-picker';
 
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
-import { ProductItemComponent } from './product-list/product-item/product-item.component';
-import { ProductListComponent } from './product-list/product-list.component';
-import { ProductDetailComponent } from './product-list/product-detail/product-detail.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { AdminProductComponent } from './Admin/admin-product/admin-product.component';
@@ -44,7 +41,7 @@ import { CartOrdersListComponent } from './Admin/admin-orders/admin-pending-orde
 import { CartOrdersItemComponent } from './Admin/admin-orders/admin-pending-orders/cart-orders-list/cart-orders-item/cart-orders-item.component';
 import { CartOrdersSelectedViewComponent } from './Admin/admin-orders/admin-pending-orders/cart-orders-selected-view/cart-orders-selected-view.component';
 import { AdminCancelCompleteOrderTableComponent } from './Admin/admin-orders/admin-cancel-complete-order-table/admin-cancel-complete-order-table.component';
-import { ProductItemCardComponent } from './Customer/product-items-list/product-item-card/product-item-card.component';
+import { ProductItemCardComponent } from './Customer/product-item-card/product-item-card.component';
 import { ProductItemsListComponent } from './Customer/product-items-list/product-items-list.component';
 import { ProductItemDetailComponent } from './Customer/product-item-view/product-item-detail/product-item-detail.component';
 import { ProductRateReviewDetailComponent } from './Customer/product-item-view/product-rate-review-detail/product-rate-review-detail.component';
@@ -67,14 +64,21 @@ import { WishlistItemComponent } from './Customer/wishlist-item-list/wishlist-it
 import { WishlistItemListComponent } from './Customer/wishlist-item-list/wishlist-item-list.component';
 import { CartItemComponent } from './Customer/cart-item-list/cart-item/cart-item.component';
 import { CartItemListComponent } from './Customer/cart-item-list/cart-item-list.component';
-import { UserService } from './services/User.service';
 import { PaymentFormComponent } from './payment-form/payment-form.component';
-import { AuthGuardService } from './services/authgaurd.service';
 import { CategoryProductComponent } from './Customer/category-product/category-product.component';
 import { CategoryMenComponent } from './category-men/category-men.component';
 import { CategoryKidsComponent } from './category-kids/category-kids.component';
 import { CategoryWomenComponent } from './category-women/category-women.component';
-
+import { CustomersOrderItemComponent } from './Customer/customer-orders/customers-order-item/customers-order-item.component';
+import { CustomersPendingOrderItemListComponent } from './Customer/customer-orders/customers-pending-order-item-list/customers-pending-order-item-list.component';
+import { CustomersCancelOrderItemListComponent } from './Customer/customer-orders/customers-cancel-order-item-list/customers-cancel-order-item-list.component';
+import { CustomersCompletedOrderItemListComponent } from './Customer/customer-orders/customers-completed-order-item-list/customers-completed-order-item-list.component';
+import { CustomerOrdersComponent } from './Customer/customer-orders/customer-orders.component';
+import { CustomerOrdersDetailItemComponent } from './Customer/customer-orders-detail-item/customer-orders-detail-item.component';
+import { UserService } from './services/User.service';
+import { AuthGuardService } from './services/authgaurd.service';
+import { ProductInquiriesListComponent } from './product-inquiries-list/product-inquiries-list.component';
+import { ProductInquiriesItemComponent } from './product-inquiries-list/product-inquiries-item/product-inquiries-item.component';
 
 
 @NgModule({
@@ -82,10 +86,6 @@ import { CategoryWomenComponent } from './category-women/category-women.componen
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    ProductItemComponent,
-    ProductListComponent,
-    ProductItemComponent,
-    ProductDetailComponent,
     HomeComponent,
     HeaderComponent,
     AdminProductComponent,
@@ -130,8 +130,16 @@ import { CategoryWomenComponent } from './category-women/category-women.componen
     CategoryProductComponent,
     CategoryMenComponent,
     CategoryKidsComponent,
-    CategoryWomenComponent
-  ],
+    CategoryWomenComponent,
+    CustomersOrderItemComponent,
+    CustomersPendingOrderItemListComponent,
+    CustomersCancelOrderItemListComponent,
+    CustomersCompletedOrderItemListComponent,
+    CustomerOrdersComponent,
+    CustomerOrdersDetailItemComponent,
+    ProductInquiriesListComponent,
+    ProductInquiriesItemComponent
+      ],
   imports: [
     BrowserModule,
     NgbModule,
@@ -144,25 +152,25 @@ import { CategoryWomenComponent } from './category-women/category-women.componen
     BarRatingModule,
     ToastrModule.forRoot(),
     NumberPickerModule
-    ],
+  ],
   providers: [AuthenticationService,
     TokenStorageService,
     ProductService,
     WishlistService,
     CartService,
     TagService,
-    RateReviewServie,OrdersService,DatePipe,
+    RateReviewServie, OrdersService, DatePipe,
     ProductInquiryService,
     UserService,
     AuthGuardService,
     {
-      provide:HTTP_INTERCEPTORS, 
-      useClass:AuthInterceptor, 
-      multi:true
-      }, {
-        provide: LocationStrategy,
-        useClass: HashLocationStrategy
-      }],
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }, {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
