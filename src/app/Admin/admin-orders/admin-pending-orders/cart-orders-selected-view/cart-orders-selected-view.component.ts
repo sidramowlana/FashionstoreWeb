@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OrdersService } from 'src/app/services/Orders.Service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-cart-orders-selected-view',
@@ -9,7 +10,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 })
 export class CartOrdersSelectedViewComponent implements OnInit {
 
-  constructor(private ordersService: OrdersService, private activatedRoute: ActivatedRoute,private router:Router) { }
+  constructor(private ordersService: OrdersService,private toastr:ToastrService, private activatedRoute: ActivatedRoute,private router:Router) { }
 
   id;
   date;
@@ -21,9 +22,7 @@ export class CartOrdersSelectedViewComponent implements OnInit {
     this.activatedRoute.params.subscribe(
       (params: Params) => {
         this.id = +params['id'];
-        console.log("this is id: " + this.id);
         this.ordersService.onGetAOrderById(this.id).subscribe(data => {
-          console.log(data);
           this.id = data.ordersId;
           this.date = data.date
           this.username = data.user.usernam;
@@ -34,23 +33,29 @@ export class CartOrdersSelectedViewComponent implements OnInit {
       }
     );
   }
-message:String;
-isError:boolean=false;
   onCancelPending() {
-    console.log("cancel: " + this.id)
     this.ordersService.onUpdateOrderStatusByOrderId("Cancelled", this.id).subscribe(data => {
-      console.log(data);
-      this.isError=false;
+      this.toastr.success("Succesfully Cancelled")
       this.router.navigate(['orders/cancel-complete']);
     },
     err=>
     {
-      this.isError = true;
-      this.message = "System couldnt perform the cancelling of the order"
+      this.toastr.error("System couldnt perform the cancelling of the order");
     });
 
   }
 
+  onCompletePending()
+  {
+    this.ordersService.onUpdateOrderStatusByOrderId("Completed", this.id).subscribe(data => {
+      this.toastr.success("Successfully completed")
+      this.router.navigate(['orders/cancel-complete']);
+    },
+    err=>
+    {
+      this.toastr.error("System couldnt perform the complete of the order");
+    });
+  }
 
 }
 

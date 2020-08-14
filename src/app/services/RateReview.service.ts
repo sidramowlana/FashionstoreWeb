@@ -22,8 +22,14 @@ export class RateReviewServie {
     average;
     constructor(private http: HttpClient,
         private tokenStorageService: TokenStorageService) {
-    } 
-    
+    }
+    onAddRateReview(productId, rateFrom): Observable<any> {
+        const localHttpOptions = getHttpOptions(this.tokenStorageService.getToken());
+        return this.http.post(API + "product-rate/" + productId, {
+            rate: rateFrom.value.rate,
+            feedback: rateFrom.value.feedback
+        }, localHttpOptions)
+    }
     onGetRateReviewByProductId(id): Observable<any> {
         const localHttpOptions = getHttpOptions(this.tokenStorageService.getToken());
         return this.http.get(API + "product-all/" + id, localHttpOptions);
@@ -32,14 +38,14 @@ export class RateReviewServie {
         this.totalRate = 0.0;
         this.average = 0.0;
         for (let rateReview of rateReviewList) {
-          this.totalRate += rateReview.rate;
-          this.average = this.totalRate / rateReviewList.length;
+            this.totalRate += rateReview.rate;
+            this.average = this.totalRate / rateReviewList.length;
         }
         return this.average;
-      }
-      onGetRateReview(id):Observable<any>{
+    }
+    onGetRateReview(id): Observable<any> {
         const localHttpOptions = getHttpOptions(this.tokenStorageService.getToken());
         return this.http.get(API + "product/rate/" + id, localHttpOptions);
-    
-      }
+
+    }
 }

@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { TokenStorageService } from 'src/app/services/tokenStorage.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
   isLoginFailed: boolean = false;
 
   errorMessage: String;
-  constructor(private authenticationService: AuthenticationService,
+  constructor(private authenticationService: AuthenticationService,private toastr:ToastrService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private tokenStorageService: TokenStorageService) { }
@@ -33,18 +34,15 @@ export class LoginComponent implements OnInit {
     this.authenticationService.onLoginService(this.loginForm).subscribe(data => {
       this.tokenStorageService.saveToken(data.token);
       this.tokenStorageService.saveUser(data);
-      this.isLoginFailed = false;
-      this.isLoggedIn = true;
+      this.toastr.success("Successfully logged in")
       this.router.navigate(['/home']);
       console.log(data);
     },
       err => {
-        console.log(err);
-        this.errorMessage = "Login credentials invalid please try again";
-        this.isLoginFailed = true;
+        this.toastr.error("Login credentials invalid please try again")
       });
   }
-  onForgotPassword(){
+  onForgotPassword(){ 
     this.router.navigate(['forgotPassword']);
   }
 }

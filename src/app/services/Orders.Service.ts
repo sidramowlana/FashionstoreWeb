@@ -22,16 +22,16 @@ export class OrdersService {
     constructor(private http: HttpClient,
         private tokenStorageService: TokenStorageService) {
     }
-    onAddOrdersService(formData, date, status) {
+    onAddOrdersService(formData, date, status,total) {
         const localHttpOptions = getHttpOptions(this.tokenStorageService.getToken());
         return this.http.post(API + 'orders/add-order/',
             {
                 postalCode: formData.value.postalCode,
                 city: formData.value.city,
                 address: formData.value.address,
-                total: formData.value.total,
                 date: date,
-                status: status
+                status: status,
+                total:total
             }, localHttpOptions);
     }
     onAddCartOrdersService(cartOrders): Observable<any> {

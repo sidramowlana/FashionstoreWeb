@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -11,10 +12,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class RegisterComponent implements OnInit {
     registerForm: FormGroup;
     errorMessage: String;
-    isSubmitted: boolean = false;
-    isFailed:boolean = false;      
   
-    constructor(private authenticationService:AuthenticationService,
+    constructor(private authenticationService:AuthenticationService,private toastr:ToastrService,
       private router:Router,
       private activatedRoute:ActivatedRoute) { }
   
@@ -36,15 +35,12 @@ export class RegisterComponent implements OnInit {
     onRegister() {
       this.authenticationService.onRegisterService(this.registerForm).subscribe(data=>{
         console.log(data);
-        this.isSubmitted = true;
-        this.isFailed = true;      
+        this.toastr.success("Successfully registered");
         this.router.navigate(['/login'], {relativeTo:this.activatedRoute});
   
       },
       err => {
-        this.errorMessage = "The system failed to register please try again";
-        this.isSubmitted = false;
-        this.isFailed = true;      
+        this.toastr.error("The system failed to register please try again");
       });
   
     }

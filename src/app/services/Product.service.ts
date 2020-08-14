@@ -23,9 +23,11 @@ export class ProductService {
     constructor(private http: HttpClient,
         private tokenStorageService: TokenStorageService) {
     }
+    
     onGetAllProductService(): Observable<any> {
         return this.http.get(API + "productAll");
     }
+
     onGetProductsByTagName(tagName): Observable<any> {
         return this.http.get(API + "category/product-all/" + tagName)
     }
@@ -38,7 +40,6 @@ export class ProductService {
         const localHttpOptions = getHttpOptions(this.tokenStorageService.getToken());
         return this.http.post(API + "admin/new-product",
             {
-
                 scaledImage: productForm.value.scaledImage,
                 productName: productForm.value.productName,
                 price: productForm.value.price,

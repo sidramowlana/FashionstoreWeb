@@ -10,8 +10,7 @@
                     <div class="col-md-6" style="width: 100%;text-align: right;">
                         <h6>{{total}}.00</h6>
                     </div>
-                    <!-- <button (click)="onPayment()"><i class="fa fa-money" aria-hidden="true"></i>&nbsp; Checkout</button> -->
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#payment" id="paymentButton"><i class="fa fa-money" aria-hidden="true"></i>&nbsp; Checkout</button>
+                    <button class="btn btn-primary" data-toggle="modal" [disabled]="total==0" data-target="#payment" id="paymentButton"><i class="fa fa-money" aria-hidden="true"></i>&nbsp; Checkout</button>
                 </div>
             </div>
         </div>
@@ -28,5 +27,4 @@
         </div>
     </div>
 </div>
-
-<app-payment-form class="modal fade" id="payment" tabindex="-1" role="dialog" aria-labelledby="paymentmodal" aria-hidden="true"></app-payment-form>
+<app-payment-form class="modal fade" id="payment" role="dialog" aria-labelledby="paymentmodal" [total]="total" aria-hidden="true"></app-payment-form>

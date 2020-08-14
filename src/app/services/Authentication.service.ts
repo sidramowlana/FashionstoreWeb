@@ -17,7 +17,7 @@ export class AuthenticationService {
   isLoggedIn = false;
   roles;
 
-  constructor(private http: HttpClient, private tokenStorageService: TokenStorageService, private router: Router, private activatedRoute: ActivatedRoute) { }
+  constructor(private http: HttpClient, private tokenStorageService: TokenStorageService) { }
 
   onLoginService(credentials): Observable<any> {
     return this.http.post(AUTH_API + "login", {
@@ -33,7 +33,7 @@ export class AuthenticationService {
       nic: user.value.nic,
       dob: user.value.dob,
       email: user.value.email,
-      mobileNo: user.value.mobileNo,
+      phone: user.value.phone,
       drivingLicence: user.value.drivingLicence,
       username: user.value.username,
       password: user.value.passwords.password

@@ -33,6 +33,7 @@ import { CustomersCompletedOrderItemListComponent } from './Customer/customer-or
 import { CustomerOrdersComponent } from './Customer/customer-orders/customer-orders.component';
 import { identifierModuleUrl } from '@angular/compiler';
 import { CustomerOrdersDetailItemComponent } from './Customer/customer-orders-detail-item/customer-orders-detail-item.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const appRoutes: Routes =
     [
@@ -53,7 +54,7 @@ const appRoutes: Routes =
         { path: 'category/men', component: CategoryMenComponent },
         { path: 'category/kids', component: CategoryKidsComponent }, 
         {
-            path: '', component: CustomerOrdersComponent, children: [
+            path: '', component: CustomerOrdersComponent,children: [
                 { path: 'pending', component: CustomersPendingOrderItemListComponent,children:[
                     {path:'details/:id',component:CustomerOrdersDetailItemComponent}
                 ] },
@@ -64,12 +65,13 @@ const appRoutes: Routes =
             ]
         },
         { path: 'my-wishlist', component: WishlistItemListComponent },
+        { path: 'profile', component: ProfileComponent },
         { path: 'my-cart', component: CartItemListComponent },
         { path: 'payment', component: PaymentFormComponent },
         { path: 'register', component: RegisterComponent },
         { path: 'login', component: LoginComponent },
         {
-            path: 'products', component: AdminProductComponent, canActivate: [AuthGuardService], children:
+            path: 'admin-products', component: AdminProductComponent, canActivate: [AuthGuardService], children:
                 [
                     { path: 'new', component: AddProductComponent },
                     { path: 'productdetail/:id', component: EditViewProductComponent }

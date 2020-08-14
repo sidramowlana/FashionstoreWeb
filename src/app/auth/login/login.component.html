@@ -26,8 +26,6 @@
                         <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Sign In</button>
                     </form>
                     <br>
-                    <div class="alert alert-danger" role="alert" *ngIf="isLoginFailed">
-                        Invalid User Credentials !!!<br>{{errorMessage}} </div>
                     <hr>
                     <br>
                     <a routerLink="/register" id="registerID">Create an account&nbsp;<i class="fa fa-sign-in" aria-hidden="true"></i></a>

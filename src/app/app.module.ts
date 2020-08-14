@@ -79,6 +79,9 @@ import { UserService } from './services/User.service';
 import { AuthGuardService } from './services/authgaurd.service';
 import { ProductInquiriesListComponent } from './product-inquiries-list/product-inquiries-list.component';
 import { ProductInquiriesItemComponent } from './product-inquiries-list/product-inquiries-item/product-inquiries-item.component';
+import { RateReviewFormComponent } from './rate-review-form/rate-review-form.component';
+import { ProfileComponent } from './profile/profile.component';
+import { SendEmailResetComponent } from './send-email-reset/send-email-reset.component';
 
 
 @NgModule({
@@ -138,7 +141,10 @@ import { ProductInquiriesItemComponent } from './product-inquiries-list/product-
     CustomerOrdersComponent,
     CustomerOrdersDetailItemComponent,
     ProductInquiriesListComponent,
-    ProductInquiriesItemComponent
+    ProductInquiriesItemComponent,
+    RateReviewFormComponent,
+    ProfileComponent,
+    SendEmailResetComponent
       ],
   imports: [
     BrowserModule,

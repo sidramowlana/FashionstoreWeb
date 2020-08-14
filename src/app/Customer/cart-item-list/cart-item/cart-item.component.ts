@@ -21,7 +21,6 @@ export class CartItemComponent implements OnInit {
    let newQuantity = this.qty.value;
     this.cartService.onUpdateCartItem(cartId,Number(newQuantity)).subscribe(()=>
     {
-      console.log("updating")
       this.cartService.cartLisAmounttUpdate.next();
     })
   }
@@ -33,7 +32,6 @@ export class CartItemComponent implements OnInit {
       this.cartService.onGetAllCartItemByUserIdService().subscribe(data => {
         this.cartService.cartListUpdate.next(data);
         this.cartService.cartListCountChange.next();
-
       });
     });
   }

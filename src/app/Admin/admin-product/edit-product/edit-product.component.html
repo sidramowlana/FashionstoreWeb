@@ -41,8 +41,6 @@
                         <button type="button" class="btn btn-default" data-dismiss="modal" (click)="onClose()">Close</button>
                         <button type="submit" class="btn btn-primary" [disabled]="!editProductForm.valid">Update Product</button>
                         <hr>
-                        <div class="alert alert-success" role="alert" id="errorMessage" *ngIf="isSubmit===true">{{message}} </div>
-                        <div class="alert alert-danger" role="alert" id="errorMessage" *ngIf="isError===true">{{message}} </div>
                     </div>
                 </form>
             </div>

@@ -4,12 +4,20 @@
             <img [attr.src]="cartOrderElement?.cart.product.scaledImage" class="imgContainer">
         </div>
         <div class="container2">
-            <h5 class="card-title">Cart Orders Id {{cartOrderElement.cardOrderId}}</h5>
+            <div class="container3">
+
+                <h5 class="card-title">Cart Orders Id {{cartOrderElement.cardOrderId}}</h5>
+                <a type="button" data-toggle="modal" data-target="#rate" *ngIf="cartOrderElement.orders.status==='Completed'"><u>Rate Me</u></a>
+
+            </div>
+
             <p class="card-text">Product: {{cartOrderElement.cart.product.productName}}</p>
             <div class="qtypricesize">
                 <p class="card-text">{{cartOrderElement.cart.size}} x {{cartOrderElement.cart.quantity}} </p>
-                <p class="card-text">{{cartOrderElement.cart.total}} </p>
+                <p class="card-text">${{(cartOrderElement.cart.total).toFixed(2)}} </p>
             </div>
         </div>
     </div>
 </div>
+<!-- Modal -->
+<app-rate-review-form [index]="cartOrderElement.cart.product.productId"></app-rate-review-form>

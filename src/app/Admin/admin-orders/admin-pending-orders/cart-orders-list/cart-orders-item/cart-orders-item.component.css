@@ -7,12 +7,6 @@ img {
     padding: 0;
 }
 
-.containerImage {
-    width: 314px;
-    max-width: 120px;
-    display: flex;
-}
-
 .imgContainer {
     width: 70%;
     height: 100%;
@@ -20,5 +14,15 @@ img {
 
 .qtypricesize {
     display: flex;
+    width: 25vw;
+    justify-content: space-around;
+}
+
+.container3 {
+    display: flex;
     justify-content: space-between;
+}
+
+a {
+    color: rgb(122, 32, 47);
 }

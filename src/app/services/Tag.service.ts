@@ -4,7 +4,7 @@ import { Observable, Subject } from "rxjs";
 import { TokenStorageService } from "./tokenStorage.service"
 import { Tag } from "../models/Tag.model";
 
-const API = 'http://localhost:8080/api/tags';
+const API = 'http://localhost:8080/api/tags/';
 
 const getHttpOptions = (token: String) => {
     return {
@@ -24,20 +24,20 @@ export class TagService {
 
     onAddNewTag(tagForm): Observable<any> {
         const localHttpOptions = getHttpOptions(this.tokenStorageService.getToken());
-        return this.http.post(API + "/admin/createTag", {
+        return this.http.post(API + "admin/createTag", {
             tag: tagForm.value.tag
         }, localHttpOptions);
     }
 
     onGetAllTags() {
         const localHttpOptions = getHttpOptions(this.tokenStorageService.getToken());
-        return this.http.get(API + "/admin/all", localHttpOptions);
+        return this.http.get(API + "all", localHttpOptions);
     }
 
 
     onDeleteTagService(tagId) {
         const localHttpOptions = getHttpOptions(this.tokenStorageService.getToken());
-        return this.http.delete(API + "/delete/" + tagId, localHttpOptions);
+        return this.http.delete(API + "delete/" + tagId, localHttpOptions);
 
     }
 }

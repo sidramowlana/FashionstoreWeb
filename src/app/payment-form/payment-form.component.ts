@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TokenStorageService } from '../services/tokenStorage.service';
 import { UserService } from '../services/User.service';
@@ -7,6 +7,7 @@ import { OrdersService } from '../services/Orders.Service';
 import { CartService } from '../services/Cart.service';
 import { CartOrders } from '../models/CartOrders.model';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-payment-form',
@@ -15,6 +16,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class PaymentFormComponent implements OnInit {
 
+  @Input() total;
   paymentForm: FormGroup;
   user;
   username;
@@ -22,8 +24,12 @@ export class PaymentFormComponent implements OnInit {
   currentDate = new Date();
   currentDateFormatted;
 
-  constructor(private userService: UserService, private datepipe: DatePipe,private toastr:ToastrService,
-    private ordersService: OrdersService, private cartService: CartService) { }
+  cartList;
+  savedOrder;
+  cartOrders: CartOrders;
+
+  constructor(private userService: UserService, private datepipe: DatePipe, private toastr: ToastrService,
+    private ordersService: OrdersService, private router: Router, private cartService: CartService) { }
 
   ngOnInit() {
     this.initForm(this.username, this.phone);
@@ -44,26 +50,20 @@ export class PaymentFormComponent implements OnInit {
       'address': new FormControl(null, Validators.required),
     });
   }
-  cartList;
-  savedOrder;
-  cartOrders:CartOrders;
   onPayment() {
-    console.log(this.paymentForm)
-    this.ordersService.onAddOrdersService(this.paymentForm, this.currentDateFormatted, "Pending").subscribe(data => {
-      console.log(data);
+    this.ordersService.onAddOrdersService(this.paymentForm, this.currentDateFormatted, "Pending",this.total).subscribe(data => {
       this.savedOrder = data;
       this.cartService.onGetAllCartItemByUserIdService().subscribe(cartListdata => {
         this.cartList = cartListdata;
-        for(let cart of this.cartList){
-          console.log(cart)
-          this.cartOrders = new CartOrders(this.savedOrder,cart);
-          console.log(this.cartOrders);
-          this.ordersService.onAddCartOrdersService(this.cartOrders).subscribe(data=>{
-            console.log(data);
+        for (let cart of this.cartList) {
+          this.cartOrders = new CartOrders(this.savedOrder, cart);
+          this.ordersService.onAddCartOrdersService(this.cartOrders).subscribe(data => {
+            this.cartService.onGetAllCartItemByUserIdService().subscribe(data => {
+              this.cartService.cartListCountChange.next();
+            });
             this.toastr.success(data.message);
-            // route the user to the orders page.
-          },err=>
-          {
+            this.router.navigate(['pending']);
+          }, err => {
             this.toastr.error("Please try again later", "System failed to make your payments");
           });
         }

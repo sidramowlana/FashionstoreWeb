@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ProductService } from 'src/app/services/Product.service';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { Product } from 'src/app/models/Product.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-edit-product',
@@ -19,7 +20,8 @@ export class EditProductComponent implements OnInit {
   quantity;
   scaledImage;
   editMode;
-  constructor(private productService: ProductService,
+  
+  constructor(private productService: ProductService,private toastr:ToastrService,
     private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
@@ -64,24 +66,15 @@ export class EditProductComponent implements OnInit {
       'shortDescription': new FormControl(null, Validators.required)
     });
   }
-  message: String;
-  isSubmit;
-  isError;
   onUpdateProduct() {
-    console.log("lets update");
     this.productService.onUpdateProduct(this.id, this.editProductForm).subscribe(data => {
-      this.message = "Successfully updated"
-      this.isSubmit = true;
-      this.isError = false;
+      this.toastr.success("Successfully updated")
       this.editProductForm.reset();
-      // this.productService.productUpdateChange.next(data);
     }, err => {
-      this.isSubmit = false;
-      this.isError = true
-      this.message = err.error.message;
+      this.toastr.error(err.error.message);
     });
   }
   onClose() {
-    this.router.navigate(['/products'], { relativeTo: this.activatedRoute });
+    this.router.navigate(['/admin-products'], { relativeTo: this.activatedRoute });
   }
 }

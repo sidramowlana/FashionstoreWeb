@@ -11,7 +11,7 @@ export class CartOrdersItemComponent implements OnInit {
 
   @Input() cartOrderElement;
   @Input() index;
-  constructor(private activatedRoute:ActivatedRoute,private ordersService:OrdersService) { }
+  constructor() { }
 
   ngOnInit() {
   }

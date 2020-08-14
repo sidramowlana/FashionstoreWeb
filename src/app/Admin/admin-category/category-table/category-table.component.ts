@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TagService } from 'src/app/services/Tag.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-category-table',
@@ -9,7 +10,7 @@ import { TagService } from 'src/app/services/Tag.service';
 export class CategoryTableComponent implements OnInit {
   tagList;
 
-  constructor(private tagService: TagService) { }
+  constructor(private tagService: TagService,private toastr:ToastrService) { }
 
   ngOnInit() {
     this.tagService.onGetAllTags().subscribe(data => {
@@ -23,11 +24,17 @@ export class CategoryTableComponent implements OnInit {
     });
   }
   onDeleteTag(index) {
-    this.tagService.onDeleteTagService(index).subscribe(() => {
+    this.tagService.onDeleteTagService(index).subscribe(data => {
+      console.log(data);
       this.tagService.onGetAllTags().subscribe(data => {
         this.tagList = data;
         this.tagService.tagUpdate.next(this.tagList);
       });
+      this.toastr.success("Successfully new category added");
+    },
+    err=>
+    {
+      this.toastr.error(err.error.message);
     });
 
   }

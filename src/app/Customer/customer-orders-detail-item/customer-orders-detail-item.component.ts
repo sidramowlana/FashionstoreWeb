@@ -63,7 +63,7 @@ export class CustomerOrdersDetailItemComponent implements OnInit {
       this.router.navigate(['pending']);
     },
       err => {
-        this.toastr.error("System couldnt perform the cancelling of the order")
+        this.toastr.error("System couldnt perform the re-ordered of the order")
       });
   }
 
@@ -77,4 +77,5 @@ export class CustomerOrdersDetailItemComponent implements OnInit {
         this.toastr.error("System couldnt perform the cancelling of the order")
       });
   }  
+  
 }

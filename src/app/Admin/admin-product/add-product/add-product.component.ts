@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TagService } from 'src/app/services/Tag.service';
 import { ProductService } from 'src/app/services/Product.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-product',
@@ -17,18 +18,13 @@ export class AddProductComponent implements OnInit {
   isSubmitted;
   isError;
   editMode
-  constructor(private router:Router,private activatedRoute:ActivatedRoute,private tagService:TagService,private productService:ProductService) { }
+  constructor(private router:Router,private toastr:ToastrService,private activatedRoute:ActivatedRoute,private tagService:TagService,private productService:ProductService) { }
 
   ngOnInit() {
     this.initForm();
     this.tagService.onGetAllTags().subscribe(data => {
       this.categoryList = data;    
     });
-    // this.equipmentService.onGetAllEquipmentService().subscribe(data => {
-    //   this.equipmentList = data;
-    //   console.log(this.equipmentList);
-    
-    // });
   }
   initForm()
   {
@@ -50,19 +46,14 @@ export class AddProductComponent implements OnInit {
     console.log(this.productForm);
     this.productService.onAddProduct(this.productForm).subscribe(data=>
       {
-        this.message = data.message;
-        this.isError = false;
-        this.isSubmitted = true;
-        console.log(this.message);
+        this.toastr.success(data.message);
         this.productForm.reset();
         this.router.navigate(['/products']);
 
       },
       err=>
       {
-        this.isError = true;
-        this.isSubmitted = false;
-        this.message = err.error.message;
+        this.toastr.error(err.error.message);
       })
   }
 }

@@ -96,7 +96,7 @@ export class ProductItemDetailComponent implements OnInit {
       this.cartService.onAddCartService(this.id, Number(this.cartQuantity), cartSize, this.totalAmount).subscribe(data => {
         console.log(data);
         this.cartService.cartListCountChange.next();
-        this.toastr.success("Added to your cart");
+        this.toastr.success(data.message);
       });
     }
   }

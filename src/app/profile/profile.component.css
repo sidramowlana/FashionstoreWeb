@@ -1,0 +1,98 @@
+.myContainer {
+    margin-top: 5%;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+}
+
+.container-sm {
+    width: 40%;
+}
+
+.pimg1 {
+    background-image: url(https://images.pexels.com/photos/1036856/pexels-photo-1036856.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260);
+    min-height: 100%;
+    height: 100vh;
+}
+
+.pimg1 {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.border {
+    margin-left: 7%;
+    border: 2px bloack;
+    background-color: white;
+    font-size: 33px;
+    box-shadow: 7px 7px 9px 1px;
+    padding-left: 7px;
+    opacity: 0.80;
+}
+
+.ptext {
+    position: absolute;
+    top: 20%;
+    width: 100%;
+    color: black;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+}
+
+.card {
+    background-color: #131212c7;
+}
+
+p {
+    background: transparent;
+    color: black;
+    color: white;
+    border-color: white;
+    vertical-align: middle;
+}
+
+label {
+    color: white;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-animation: autofill 0s forwards;
+    animation: autofill 0s forwards;
+}
+
+@keyframes autofill {
+    100% {
+        background: transparent;
+        color: inherit;
+    }
+}
+
+.prepend {
+    background-color: transparent;
+}
+
+::placeholder {
+    color: rgb(189, 189, 189);
+}
+
+button {
+    border-radius: 18px;
+    background: rgb(122, 32, 47);
+    ;
+    width: 100%;
+    border: rgb(122, 32, 47);
+    ;
+}
+
+button[disabled] {
+    border-radius: 18px;
+    background-color: rgb(122, 32, 47);
+    ;
+    width: 100%;
+}
